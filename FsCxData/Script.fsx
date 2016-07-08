@@ -8,12 +8,8 @@ open FSharp.Data
 System.IO.Directory.SetCurrentDirectory(__SOURCE_DIRECTORY__ )
 #endif
 
-let fileName = System.IO.Path.Combine(__SOURCE_DIRECTORY__,"RD_7_Data_small.txt")
-
-//"RD_7_Data_small.txt" 
-//|> System.IO.File.ReadLines
-//|> Seq.map (fun row -> sprintf "%s" row)
-//|> Seq.iter (printfn "%s")
+//let filename = System.IO.Path.Combine(__SOURCE_DIRECTORY__,"RD_7_Data_small.txt")
+let filename = System.IO.Path.Combine(__SOURCE_DIRECTORY__,"RD_7_Data.txt")
 
 //Bib
 //First Name
@@ -44,8 +40,10 @@ type Rider = {
     Surname: string;
     Club: string;
     Catagory: string;
-    Sex: string
-    ArmNumber: string
+    Sex: string;
+    ArmNumber: string;
+    Laps: int;
+    Finish: System.TimeSpan
 }
 
 let csvRowToRider (row:CsvRow) = 
@@ -57,10 +55,13 @@ let csvRowToRider (row:CsvRow) =
         Catagory = row.[4];
         Sex = row.[5];
         ArmNumber = row.[6];
+        Laps = row.[7].AsInteger();
+        Finish = System.TimeSpan.Parse(row.[18])
     }
 
-CsvFile.Load(fileName).Cache().Rows
+CsvFile.Load(filename, hasHeaders = false).Rows
 |> Seq.map csvRowToRider
-|> Seq.take 1
+|> Seq.take 100
+|> Seq.sortBy(fun r -> -r.Laps, r.Finish)
 |> Seq.iter (printfn "%A")
 

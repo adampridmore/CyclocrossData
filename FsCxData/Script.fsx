@@ -1,8 +1,10 @@
 ﻿#r @"..\packages\FSharp.Data.2.3.1\lib\net40\FSharp.Data.dll"
+#r @"..\packages\FSharp.Charting.0.90.14\lib\net40\FSharp.Charting.dll"
 
 #load "Library1.fs"
 open FsCxData
 open FSharp.Data
+open FSharp.Charting
 
 #if INTERACTIVE
 System.IO.Directory.SetCurrentDirectory(__SOURCE_DIRECTORY__ )
@@ -42,7 +44,7 @@ type Rider = {
     Catagory: string;
     Sex: string;
     ArmNumber: string;
-    Laps: int;
+    LapCount: int;
     Finish: System.TimeSpan
 }
 
@@ -55,13 +57,17 @@ let csvRowToRider (row:CsvRow) =
         Catagory = row.[4];
         Sex = row.[5];
         ArmNumber = row.[6];
-        Laps = row.[7].AsInteger();
+        LapCount = row.[7].AsInteger();
+
         Finish = System.TimeSpan.Parse(row.[18])
     }
 
-CsvFile.Load(filename, hasHeaders = false).Rows
-|> Seq.map csvRowToRider
-|> Seq.take 100
-|> Seq.sortBy(fun r -> -r.Laps, r.Finish)
-|> Seq.iter (printfn "%A")
+Chart.Line(
+    CsvFile.Load(filename, hasHeaders = false).Rows
+    |> Seq.map csvRowToRider
+    |> Seq.take 100
+    |> Seq.sortBy(fun r -> -r.Laps, r.Finish)
+    |> Seq.map(fun r->(r.Finish.TotalSeconds))
+) |> Chart.Show
+
 

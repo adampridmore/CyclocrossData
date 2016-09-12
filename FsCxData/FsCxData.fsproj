@@ -52,7 +52,9 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Library1.fs" />
+    <Compile Include="HtmlParse.fs" />
     <None Include="Script.fsx" />
+    <None Include="Script_Html.fsx" />
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

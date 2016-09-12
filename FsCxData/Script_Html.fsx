@@ -60,5 +60,9 @@ let parseRow (row:resultsProvider.Smartiming.Row) =
 
 table.Rows
 |> Seq.map parseRow
-|> Seq.filter (fun rider -> rider.name.Contains("Pridmore"))
-|> Seq.iteri (printfn "%A %A")
+|> Seq.map (fun (rider:Rider) -> rider.cumulativeLapTime |> Seq.map (fun ts -> ts.TotalSeconds))
+|> Seq.map FSharp.Charting.Chart.Line
+|> FSharp.Charting.Chart.Combine
+|> FSharp.Charting.Chart.Show
+
+// TODO - Calculate lap position

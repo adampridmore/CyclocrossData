@@ -2,29 +2,16 @@
 
 open FSharp.Data
 open System
+open Types
 
 [<Literal>] 
-let Url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround2senior"
+//let Url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround2senior"
+let Url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround3senior"
+
 //let url = "..\..\..\CX\Html\Race Times.html"
 //let url = @"C:\Users\Adam\Dropbox\Work\Dev\Cyclocross\CX\Html\Race Times.html"
 
 type resultsProvider = HtmlProvider<Url>
-
-type LapColumn = { 
-    index: int; 
-    lapNumber: int
-}  
-
-type Lap = {
-    lapTime : TimeSpan
-    cumulativeLapTime : TimeSpan
-}
-
-type Rider = {
-    name: string
-    laps : Lap list
-    lapCount : int
-}
 
 
 let toLapColumn index lapNumber = { index = index; lapNumber = lapNumber }
@@ -62,7 +49,7 @@ let parseRow (row:resultsProvider.Smartiming.Row) =
     
     let lapTimes = 
         [
-            row.OutLap;
+//            row.OutLap; // TODO
             row.Lap1;
             row.Lap2;
             row.Lap3;
@@ -70,6 +57,7 @@ let parseRow (row:resultsProvider.Smartiming.Row) =
             row.Lap5;
             row.Lap6;
             row.Lap7;
+            row.Lap8; // TODO - Read all laps etc
         ] 
         |> Seq.filter (String.IsNullOrWhiteSpace >> not)
         |> Seq.map parseTimeSpan
@@ -81,9 +69,13 @@ let parseRow (row:resultsProvider.Smartiming.Row) =
         Seq.zip lapTimes cumulativeLapTimes
         |> Seq.map (fun (lapTime,cumulativeLapTime) -> { lapTime = lapTime; cumulativeLapTime = cumulativeLapTime})
         |> Seq.toList
-
+    
     { 
-        name = name;
+        rider = { name = name };
         laps = laps;
         lapCount = laps.Length;
     }
+
+
+
+

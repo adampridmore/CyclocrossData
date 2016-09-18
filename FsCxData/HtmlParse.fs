@@ -6,7 +6,8 @@ open Types
 
 [<Literal>] 
 //let Url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround2senior"
-let Url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround3senior"
+//let Url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround3senior"
+let Url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround3senior/" // RD3
 
 //let url = "..\..\..\CX\Html\Race Times.html"
 //let url = @"C:\Users\Adam\Dropbox\Work\Dev\Cyclocross\CX\Html\Race Times.html"
@@ -79,3 +80,4 @@ let parseRow (row:resultsProvider.Smartiming.Row) =
 
 
 
+ 

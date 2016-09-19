@@ -37,18 +37,27 @@ let toRiderChart rider (laps: int list) =
     FSharp.Charting.Chart.Line(laps, Name=(sprintf "%s(%d)" rider.name (laps |> Seq.last) ) ) 
     |> FSharp.Charting.Chart.WithStyling(BorderWidth=4)
 
-let render riderAndLaps = 
+let mapToRiderAndLapPositions riderAndLaps = 
     let maxLapsIndex =  riderAndLaps |> Seq.map (fun r -> r.lapCount) |> Seq.max |> minusOne
-    
+
     seq{0..maxLapsIndex}
     |> Seq.map (fun lapIndex -> riderAndLaps |> lapByRider lapIndex)
     |> Seq.collect id
     |> Seq.groupBy (fun r->r.rider)
     |> Seq.map (fun (r, rlp) -> r, (rlp |> Seq.map (fun x -> x.position) |> Seq.toList) )
     |> Seq.sortBy(fun (r , _) -> r.name)
+
+let showCharForRiderAndLapPositions riderAndLaps =
+    riderAndLaps
     |> Seq.map (fun (rider, laps) -> toRiderChart rider laps)
     |> Chart.Combine 
     //|> Chart.WithLegend(Enabled=true,Title="Riders", InsideArea=false, Docking=ChartTypes.Docking.Bottom)
     |> Chart.WithLegend(Enabled=true,Title="Riders", InsideArea=false )
     //|> Chart.WithLegend(Enabled=true,Title="Riders")
     |> Chart.Show 
+
+let render riderAndLaps = 
+    riderAndLaps 
+    |> mapToRiderAndLapPositions
+    |> showCharForRiderAndLapPositions
+        

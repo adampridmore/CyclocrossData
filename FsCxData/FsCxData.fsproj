@@ -55,9 +55,11 @@
     <Compile Include="Library1.fs" />
     <Compile Include="Types.fs" />
     <Compile Include="HtmlParse.fs" />
+    <Compile Include="CsvParse.fs" />
     <None Include="Script.fsx" />
     <None Include="Script_Html.fsx" />
     <None Include="Script_Html2.fsx" />
+    <None Include="Script_Html3.fsx" />
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

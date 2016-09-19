@@ -5,15 +5,13 @@ open System
 open Types
 
 [<Literal>] 
-//let Url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround2senior"
-//let Url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround3senior"
-let Url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround3senior/" // RD3
+let Url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround2senior"
+//let Url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround3senior/" // RD3
 
 //let url = "..\..\..\CX\Html\Race Times.html"
 //let url = @"C:\Users\Adam\Dropbox\Work\Dev\Cyclocross\CX\Html\Race Times.html"
 
 type resultsProvider = HtmlProvider<Url>
-
 
 let toLapColumn index lapNumber = { index = index; lapNumber = lapNumber }
 
@@ -23,7 +21,7 @@ let parseLapNumber (text:string) =
     | text when text = "Laps" -> None
     | text when text.Substring(0,3) = "Lap" -> Some(text.Substring(3) |> System.Int32.Parse)
     | _ -> None
-
+    
 let table = resultsProvider.Load(Url).Tables.Smartiming
 
 let lapColumns = 
@@ -50,15 +48,15 @@ let parseRow (row:resultsProvider.Smartiming.Row) =
     
     let lapTimes = 
         [
-//            row.OutLap; // TODO
-            row.Lap1;
+            row.OutLap; // TODO
+            row.Lap1;   
             row.Lap2;
             row.Lap3;
             row.Lap4;
             row.Lap5;
             row.Lap6;
             row.Lap7;
-            row.Lap8; // TODO - Read all laps etc
+            //row.Lap8; // TODO - Read all laps etc
         ] 
         |> Seq.filter (String.IsNullOrWhiteSpace >> not)
         |> Seq.map parseTimeSpan

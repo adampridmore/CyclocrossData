@@ -4,19 +4,12 @@
 #load "Types.fs"
 #load "HtmlParse.fs"
 
-open FsCxData
 open FSharp.Data
 open FSharp.Charting
 open System
 open HtmlParse
 open Types
 
-let riderAndLaps = 
-    table.Rows 
-    |> Seq.map parseRow 
-    //|> Seq.take 5 
-    |> Seq.filter (fun r -> r.rider.name |> String.IsNullOrWhiteSpace |> not)
-    |> Seq.toList
 
 type RiderLapPosition = {
     rider: Rider;
@@ -33,7 +26,7 @@ let lapByRider lapNumber riders =
 
 let minusOne x = x - 1
 
-let maxLapsIndex = riderAndLaps |> Seq.map (fun r -> r.lapCount) |> Seq.max |> minusOne
+let maxLapsIndex = riderAndLaps() |> Seq.map (fun r -> r.lapCount) |> Seq.max |> minusOne
 
 let getFinalPosition laps = 
     (laps |> Seq.last)
@@ -43,7 +36,7 @@ let toRiderChart rider (laps: int list) =
     |> FSharp.Charting.Chart.WithStyling(BorderWidth=4)
 
 seq{0..maxLapsIndex}
-|> Seq.map (fun lapIndex -> riderAndLaps |> lapByRider lapIndex)
+|> Seq.map (fun lapIndex -> riderAndLaps() |> lapByRider lapIndex)
 |> Seq.collect id
 |> Seq.groupBy (fun r->r.rider)
 |> Seq.map (fun (r, rlp) -> r, (rlp |> Seq.map (fun x -> x.position) |> Seq.toList) )

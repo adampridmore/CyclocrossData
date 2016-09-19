@@ -2,23 +2,17 @@
 
 open FSharp.Data
 open System
+open Types
 
 [<Literal>] 
-let Filename =  __SOURCE_DIRECTORY__ + @"\..\..\CX\2\rd3.csv"
+//let Filename =  __SOURCE_DIRECTORY__ + @"\..\..\CX\2\rd3.csv"
+//let Filename =  __SOURCE_DIRECTORY__ + @"\..\..\CX\2\rd3_top10.csv"
 
-[<StructuredFormatDisplay("LapTime {LapTime}, cumulativeLapTime {CumulativeLapTime}")>]
-type Lap = {
-    LapTime : TimeSpan
-    CumulativeLapTime : TimeSpan
-}
+//let Filename = __SOURCE_DIRECTORY__ + @"\..\..\CX\RacesWinter2016\RD1.csv"
+let Filename = __SOURCE_DIRECTORY__ + @"\..\..\CX\RacesWinter2016\RD2.csv"
+//let Filename = __SOURCE_DIRECTORY__ + @"\..\..\CX\RacesWinter2016\RD3.csv"
 
-type RiderWithLaps = {
-    Name : string ;
-    Laps: Lap list ;
-    LapCount : int ;
-}
-
-let data = CsvFile.Load(Filename).Cache()
+let data = CsvFile.Load(Filename) //.Cache()
 
 let headers = data.Headers
 
@@ -69,15 +63,21 @@ let parseCsvRow (row:CsvRow) =
     let laps = 
         lapsTimes 
         |> Seq.zip cumulativeLaps
-        |> Seq.map (fun (l, cl) -> { LapTime = l; CumulativeLapTime = cl})
+        |> Seq.map (fun (l, cl) -> { lapTime = l ; cumulativeLapTime = cl})
+
+    let rider = { name = (sprintf "%s %s" firstname surname) }
 
     { 
-        Name = (sprintf "%s %s" firstname surname) ;
-        Laps = laps |> Seq.toList ; 
-        LapCount = laps |> Seq.length
+        rider = rider ;
+        laps = laps |> Seq.toList ; 
+        lapCount = laps |> Seq.length
     }
 
 
+
+let riderAndLapsFromCsv() = 
+    data.Rows 
+    |> Seq.map parseCsvRow
 
 
 

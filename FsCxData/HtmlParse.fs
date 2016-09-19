@@ -8,9 +8,6 @@ open Types
 let Url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround2senior"
 //let Url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround3senior/" // RD3
 
-//let url = "..\..\..\CX\Html\Race Times.html"
-//let url = @"C:\Users\Adam\Dropbox\Work\Dev\Cyclocross\CX\Html\Race Times.html"
-
 type resultsProvider = HtmlProvider<Url>
 
 let toLapColumn index lapNumber = { index = index; lapNumber = lapNumber }
@@ -75,7 +72,12 @@ let parseRow (row:resultsProvider.Smartiming.Row) =
         lapCount = laps.Length;
     }
 
-
-
+let riderAndLapsFromHtml() = 
+    table.Rows 
+    |> Seq.map parseRow 
+    //|> Seq.take 5 
+    |> Seq.filter (fun r -> r.rider.name |> String.IsNullOrWhiteSpace |> not)
+    |> Seq.toList
 
  
+

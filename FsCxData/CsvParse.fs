@@ -9,8 +9,9 @@ open Types
 //let Filename =  __SOURCE_DIRECTORY__ + @"\..\..\CX\2\rd3_top10.csv"
 
 //let Filename = __SOURCE_DIRECTORY__ + @"\..\..\CX\RacesWinter2016\RD1.csv"
-let Filename = __SOURCE_DIRECTORY__ + @"\..\..\CX\RacesWinter2016\RD2.csv"
-//let Filename = __SOURCE_DIRECTORY__ + @"\..\..\CX\RacesWinter2016\RD3.csv"
+//let Filename = __SOURCE_DIRECTORY__ + @"\..\..\CX\RacesWinter2016\RD2.csv"
+let Filename = __SOURCE_DIRECTORY__ + @"\..\..\CX\RacesWinter2016\RD3.csv"
+//let Filename = @"C:\Users\Adam\Desktop\Temp\ThreePeaksCX\Results.csv"
 
 let data = CsvFile.Load(Filename) //.Cache()
 

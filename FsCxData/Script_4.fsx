@@ -17,4 +17,6 @@ open LapRender
 //let riderAndLaps = riderAndLapsFromHtml()
 let riderAndLaps = riderAndLapsFromCsv()
 
-riderAndLaps |> render
+riderAndLaps 
+//|> Seq.take 20
+|> render

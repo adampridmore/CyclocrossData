@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ef8bc31f-2499-418a-b7f7-f9b7da748165</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>FsCxData</RootNamespace>
     <AssemblyName>FsCxData</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -56,11 +56,14 @@
     <Compile Include="HtmlParse.fs" />
     <Compile Include="CsvParse.fs" />
     <Compile Include="LapRender.fs" />
+    <Compile Include="Main.fs" />
     <None Include="Script.fsx" />
     <None Include="Script_Html.fsx" />
     <None Include="Script_Html2.fsx" />
     <None Include="Script_Html3.fsx" />
     <None Include="Script_4.fsx" />
+    <None Include="Chart_Scratch.fsx" />
+    <None Include="DateGenerator.fsx" />
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

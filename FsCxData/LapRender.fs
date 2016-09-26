@@ -1,16 +1,10 @@
 ﻿module LapRender
 
+open System.Drawing
 open FSharp.Data
 open FSharp.Charting
 open System
 open Types
-
-//let riderAndLaps = 
-//    table.Rows 
-//    |> Seq.map parseRow 
-//    //|> Seq.take 5 
-//    |> Seq.filter (fun r -> r.rider.name |> String.IsNullOrWhiteSpace |> not)
-//    |> Seq.toList
 
 type RiderLapPosition = {
     rider: Rider;
@@ -33,10 +27,6 @@ let maxLapsIndex riderAndLaps =
 let getFinalPosition laps = 
     (laps |> Seq.last)
 
-let toRiderChart rider (laps: int list) = 
-    FSharp.Charting.Chart.Line(laps, Name=(sprintf "%s(%d)" rider.name (laps |> Seq.last) ) ) 
-    |> FSharp.Charting.Chart.WithStyling(BorderWidth=4)
-
 let mapToRiderAndLapPositions riderAndLaps = 
     let maxLapsIndex =  riderAndLaps |> Seq.map (fun r -> r.lapCount) |> Seq.max |> minusOne
 
@@ -47,10 +37,21 @@ let mapToRiderAndLapPositions riderAndLaps =
     |> Seq.map (fun (r, rlp) -> r, (rlp |> Seq.map (fun x -> x.position) |> Seq.toList) )
     |> Seq.sortBy(fun (r , _) -> r.name)
 
+let toRiderChart rider (laps: int list) (color: System.Drawing.Color) = 
+    let name = sprintf "%s(%d)" rider.name (laps |> Seq.last) 
+
+    FSharp.Charting.Chart.Line(laps, Name = name, (* Color = color,*) XTitle = "Lap", YTitle = "Position")
+    |> FSharp.Charting.Chart.WithStyling(BorderWidth=6) 
+
+
+let numberToColor i = 
+    let randomColor = Color.FromArgb(i * 100)
+    Color.FromArgb(255, randomColor)
+
 let showCharForRiderAndLapPositions riderAndLaps =
     riderAndLaps
-    |> Seq.map (fun (rider, laps) -> toRiderChart rider laps)
-    |> Chart.Combine 
+    |> Seq.mapi (fun i (rider, laps) -> toRiderChart rider laps (i |> numberToColor) )
+    |> Chart.Combine
     //|> Chart.WithLegend(Enabled=true,Title="Riders", InsideArea=false, Docking=ChartTypes.Docking.Bottom)
     |> Chart.WithLegend(Enabled=true,Title="Riders", InsideArea=false )
     //|> Chart.WithLegend(Enabled=true,Title="Riders")
@@ -60,4 +61,5 @@ let render riderAndLaps =
     riderAndLaps 
     |> mapToRiderAndLapPositions
     |> showCharForRiderAndLapPositions
-        
+
+

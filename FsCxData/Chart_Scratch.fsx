@@ -1,5 +1,6 @@
 ﻿#r @"..\packages\FSharp.Data.2.3.1\lib\net40\FSharp.Data.dll"
 #r @"..\packages\FSharp.Charting.0.90.14\lib\net40\FSharp.Charting.dll"
+#r @"System.Windows.Forms.DataVisualization.dll"
 
 open FSharp.Data
 open FSharp.Charting
@@ -27,3 +28,29 @@ let generateData f =
 |> Chart.WithXAxis(Min = minX, Max= maxX, TitleFontSize=20.0, Title="x (π)")
 |> Chart.WithYAxis(Min = minY, Max= maxY, TitleFontSize=20.0, Title="fn(x)")
 |> Chart.Show
+
+
+
+let generateDataForSeries (index:int) = 
+    seq{0..10}
+    |> Seq.map (fun x -> match x with 
+                         | 0 -> 0
+                         | 1 -> 1
+                         | _ -> x + index)
+
+let chart = 
+    seq{0..50}
+    |> Seq.map generateDataForSeries
+    |> Seq.map (fun data -> Chart.Line data)
+    |> Seq.rev
+    |> Chart.Combine
+    |> Chart.WithLegend()
+
+let chartControl = new FSharp.Charting.ChartTypes.ChartControl(chart);
+
+
+chart |> Chart.WithStyling()
+
+chart |> Chart.Show
+
+chart |> Chart.Save("c:\Temp\CX\size.png")

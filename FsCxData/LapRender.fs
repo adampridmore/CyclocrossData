@@ -37,29 +37,74 @@ let mapToRiderAndLapPositions riderAndLaps =
     |> Seq.map (fun (r, rlp) -> r, (rlp |> Seq.map (fun x -> x.position) |> Seq.toList) )
     |> Seq.sortBy(fun (r , _) -> r.name)
 
+let startsWith (value:string) (name:string) = 
+    name.StartsWith(value)
+
+let highlight rider = 
+    let highlighList = [
+        "Adam Pridmore"; 
+        "Ian Cliffe"; 
+        "Simon Everet";
+        "Stuart Hull";
+        "Michael Burdon";
+        "John Elwell";
+        "John Wilkinson";
+        "Richard Brewster";
+        "Paul Oldham";
+        "Rob Jebb";
+        "Nick Craig";
+        "Ian Taylor"
+        
+    ]
+    
+//    match rider.name with
+//    | name when name |> startsWith "Adam Pridmore" -> true
+//    | _ -> false
+    match rider.name with
+    | name when highlighList |> Seq.exists (fun n -> name.StartsWith(n)) -> true
+    | _ -> false
+
 let toRiderChart rider (laps: int list) (color: System.Drawing.Color) = 
     let name = sprintf "%s(%d)" rider.name (laps |> Seq.last) 
 
-    FSharp.Charting.Chart.Line(laps, Name = name, (* Color = color,*) XTitle = "Lap", YTitle = "Position")
-    |> FSharp.Charting.Chart.WithStyling(BorderWidth=6) 
+    let borderWidth = 
+        match rider |> highlight with
+        | true -> 5
+        | false -> 1        
 
+    FSharp.Charting.Chart.Line(laps, Name = name, (* Color = color,*) XTitle = "Lap", YTitle = "Position")
+    |> FSharp.Charting.Chart.WithStyling(BorderWidth=borderWidth) 
 
 let numberToColor i = 
     let randomColor = Color.FromArgb(i * 100)
     Color.FromArgb(255, randomColor)
 
-let showCharForRiderAndLapPositions riderAndLaps =
-    riderAndLaps
-    |> Seq.mapi (fun i (rider, laps) -> toRiderChart rider laps (i |> numberToColor) )
-    |> Chart.Combine
-    //|> Chart.WithLegend(Enabled=true,Title="Riders", InsideArea=false, Docking=ChartTypes.Docking.Bottom)
-    |> Chart.WithLegend(Enabled=true,Title="Riders", InsideArea=false )
-    //|> Chart.WithLegend(Enabled=true,Title="Riders")
-    |> Chart.Show 
+let maximumSegmentIndex = 5
 
-let render riderAndLaps = 
+let showCharForRiderAndLapPositions riderAndLaps =
+    let chart = 
+        riderAndLaps
+        |> Seq.filter (fun ((rider:Rider), _) -> rider|> highlight)
+        |> Seq.mapi (fun i (rider, laps) -> toRiderChart rider laps (i |> numberToColor) )
+        |> Chart.Combine
+        |> Chart.WithXAxis(Title="Segment - [Ingleborough(0), Cold Cotes(1), Whernside(2), Ribblehead(3) Pen-y-ghent(4) Finish(5)]")
+        |> Chart.WithYAxis(Title="Position")
+        |> Chart.WithArea.AxisX(Minimum=0.0,Maximum=(maximumSegmentIndex |> float))
+        //|> Chart.WithLegend(Enabled=true,Title="Riders", InsideArea=false, Docking=ChartTypes.Docking.Bottom)
+        //|> Chart.WithLegend(Enabled=true,Title="Riders", InsideArea=false )
+        |> Chart.WithLegend()
+    //    |> Chart.WithLegend(Enabled=true,Title="Riders")  
+        //|> Chart.Save("c:\Temp\CX\chart1.png"); 
+    //|> Chart.Show
+
+    chart |> Chart.Show
+
+
+
+let render (riderAndLaps: RiderAndLaps seq) = 
     riderAndLaps 
     |> mapToRiderAndLapPositions
+    |> Seq.sortBy (fun (rider,_) -> rider |> highlight)
     |> showCharForRiderAndLapPositions
 
 

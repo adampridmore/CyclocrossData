@@ -5,8 +5,9 @@ open System
 open Types
 
 [<Literal>] 
-let Url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround2senior"
-//let Url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround3senior/" // RD3
+// let Url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround2senior"
+// let Url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround3senior/" // RD3
+let Url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround4senior/" // RD4
 
 type resultsProvider = HtmlProvider<Url>
 
@@ -42,10 +43,11 @@ let lapsToCumulative (laps: TimeSpan seq) =
 
 let parseRow (row:resultsProvider.Smartiming.Row) =
     let name = sprintf "%s %s" row.``First Name`` row.Surname
+    let club = row.Club
     
     let lapTimes = 
         [
-            row.OutLap; // TODO
+            //row.OutLap; // TODO
             row.Lap1;   
             row.Lap2;
             row.Lap3;
@@ -53,7 +55,11 @@ let parseRow (row:resultsProvider.Smartiming.Row) =
             row.Lap5;
             row.Lap6;
             row.Lap7;
-            //row.Lap8; // TODO - Read all laps etc
+            row.Lap8; 
+            row.Lap9; 
+            row.Lap10; 
+            row.Lap11; 
+            row.Lap12; // TODO - Read all laps etc
         ] 
         |> Seq.filter (String.IsNullOrWhiteSpace >> not)
         |> Seq.map parseTimeSpan
@@ -67,7 +73,7 @@ let parseRow (row:resultsProvider.Smartiming.Row) =
         |> Seq.toList
     
     { 
-        rider = { name = name };
+        rider = { name = name; club = club };
         laps = laps;
         lapCount = laps.Length;
     }

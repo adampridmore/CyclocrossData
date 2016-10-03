@@ -18,6 +18,7 @@ type Rider = {
     club: string
 }
 
+[<StructuredFormatDisplay("RiderAndLaps {rider}, lapCount {lapCount}")>]
 type RiderAndLaps = {
     rider: Rider
     laps : Lap list

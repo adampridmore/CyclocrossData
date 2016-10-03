@@ -14,8 +14,8 @@ open CsvParse
 open Types
 open LapRender
 
-//let riderAndLaps = riderAndLapsFromHtml()
-let riderAndLaps = riderAndLapsFromCsv()
+let riderAndLaps = riderAndLapsFromHtml()
+//let riderAndLaps = riderAndLapsFromCsv()
 
 riderAndLaps 
 //|> Seq.take 20

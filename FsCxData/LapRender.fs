@@ -40,29 +40,28 @@ let mapToRiderAndLapPositions riderAndLaps =
 let startsWith (value:string) (name:string) = 
     name.StartsWith(value)
 
-let highlight rider = 
-    let highlighList = [
-        "Adam Pridmore"; 
-        "Ian Cliffe"; 
-        "Simon Everet";
-        "Stuart Hull";
-        "Michael Burdon";
-        "John Elwell";
-        "John Wilkinson";
-        "Richard Brewster";
-        "Paul Oldham";
-        "Rob Jebb";
-        "Nick Craig";
-        "Ian Taylor"
-        
-    ]
-    
+let highlight (rider:Rider) = 
+//    let highlighList = [
+//        "Adam Pridmore"; 
+//        "Ian Cliffe"; 
+//        "Simon Everet";
+//        "Stuart Hull";
+//        "Michael Burdon";
+//        "John Elwell";
+//        "John Wilkinson";
+//        "Richard Brewster";
+//        "Paul Oldham";
+//        "Rob Jebb";
+//        "Nick Craig";
+//        "Ian Taylor"
+//        
+//    ]
+//    
 //    match rider.name with
-//    | name when name |> startsWith "Adam Pridmore" -> true
+//    | name when highlighList |> Seq.exists (fun n -> name.StartsWith(n)) -> true
 //    | _ -> false
-    match rider.name with
-    | name when highlighList |> Seq.exists (fun n -> name.StartsWith(n)) -> true
-    | _ -> false
+
+    rider.club.ToLower().Contains("Ilkley".ToLower())
 
 let toRiderChart rider (laps: int list) (color: System.Drawing.Color) = 
     let name = sprintf "%s(%d)" rider.name (laps |> Seq.last) 

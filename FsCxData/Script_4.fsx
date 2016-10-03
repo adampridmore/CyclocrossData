@@ -3,14 +3,14 @@
 #r @"System.Windows.Forms.DataVisualization.dll"
 
 #load "Types.fs"
-#load "HtmlParse.fs"
+//#load "HtmlParse.fs"
 #load "CsvParse.fs"
 #load "LapRender.fs"
 
 open FSharp.Data
 open FSharp.Charting
 open System
-open HtmlParse
+//open HtmlParse
 open CsvParse
 open Types
 open LapRender

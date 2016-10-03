@@ -14,7 +14,8 @@ type Lap = {
 }
 
 type Rider = {
-    name: string
+    name: string;
+    club: string
 }
 
 type RiderAndLaps = {

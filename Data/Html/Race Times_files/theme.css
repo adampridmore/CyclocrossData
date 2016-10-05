@@ -1,0 +1,702 @@
+
+/* 
+  BF Internet HTML boilerplate - an ever-evolving start point for HTML development on BF Internet projects
+  This Boilerplate started life as HTML5 Boilerplate [http://html5boilerplate.com]
+
+  It is intended for large groups of styles for pages beyond the home page (contact form, gallery etc.) are separated into a different sheet
+  There is no point in every user downloading ALL styles for the whole site, when they only wanted to view the home page  
+
+*/
+
+/*! normalize.css v2.1.2 | MIT License | git.io/normalize */
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}audio,canvas,video{display:inline-block}audio:not([controls]){display:none;height:0}[hidden]{display:none}html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}a:focus{outline:thin dotted}a:active,a:hover{outline:0}h1{font-size:2em;margin:.67em 0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}mark{background:#ff0;color:#000}code,kbd,pre,samp{font-family:monospace,serif;font-size:1em}pre{white-space:pre-wrap}q{quotes:"\201C" "\201D" "\2018" "\2019"}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:0}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}button,input{line-height:normal}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}textarea{overflow:auto;vertical-align:top}table{border-collapse:collapse;border-spacing:0}
+
+
+
+
+/*--------------------------------------
+------  Primary Website Styles -------
+---------------------------------------*/
+
+body, select, input, textarea {
+	font: 16px 1em/1.38 'Open Sans', Arial, sans-serif;
+	font-family:'Open Sans';
+	color: #444;
+}
+
+html {
+	text-align: center;
+	background:#222;
+}
+
+body {
+	margin: auto;
+	min-width: 1440px;
+	text-align: left;
+	background:#e2e2e2;
+}
+
+/* Differenciate links from body copy with more than just colour. Not everyone can see colours: http://j.mp/i9Wt2E */
+a, a:active, a:visited {
+	color: #444;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #4a7377;
+	text-decoration: underline;
+}
+
+h1, h2 {
+	font-size: 24px;
+}
+
+h3 {
+	font-size: 17px;
+}
+
+h4 {
+	font-size: 15px;
+}
+
+h5 {
+	font-size: 13px;
+}
+
+h1,h2,h3,h4,h5 {
+	/* Top & bottom margin based on font size. */
+	margin: 1.3em 0 0.7em 0;
+}
+
+.wrapper {
+	width:1200px;
+	margin:0 auto;
+}
+
+
+/*
+* Header
+*/
+
+header {
+	background: #fff;
+	height:120px;
+}
+
+header img {
+	display: block;
+	float: left;
+	width: 60%;
+	height: auto;
+}
+
+h1#title {
+	padding-top: 20px;
+	margin: 0;
+	width:15%;
+	float:left;
+	text-indent: -9999em;
+}
+
+h1#title a {
+	display: block;
+	height:87px;
+	width:125px;
+	background:url('/images/smartTimingLogo.svg') no-repeat center center scroll;
+}
+
+.lt-ie9 h1#title a {
+	background:url('/images/smartTimingLogo.png') no-repeat center center scroll;
+}
+
+h1#title a:hover {
+	color: inherit;
+}
+
+/*
+* Navigation
+*/
+
+nav {
+	float: right;
+	margin-top: 3em;
+	width:1224px;
+}
+
+nav ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	height: 26px;
+	float:right;
+}
+
+nav li {
+	float: left;
+}
+
+nav a, nav span {
+	min-height: 26px;
+	font: 400 1em/1.38 Montserrat;
+	text-transform: uppercase;
+	color: #444 !important;
+	padding: 32px 30px;
+}
+
+nav a:hover, nav span:hover {
+	color: #6BA5B0 !important;
+}
+
+/* dropdown */
+nav li ul {
+	position: absolute;
+	width: 190px;
+	left: -999em;
+	clear: left;
+	background: #6ba5b0;
+	margin: 30px 0px 0px;
+}
+
+nav li:hover ul {
+	left: auto;
+}
+
+nav li ul li {
+	float:left;
+	display:block;
+}
+
+nav li ul a {
+	width: 140px;
+	display:block;
+	background: #6ba5b0;
+	padding: 20px 30px;
+	border-bottom: 1px solid #58888D;
+}
+
+nav li ul a:hover {
+	color:#fff;
+	background:#58888d;
+}
+
+
+
+/*
+* Main area
+*/
+
+.hp.banner {
+	min-width: 1440px;
+	height: 400px;
+	margin: 0px auto;
+	overflow:hidden;
+	position:relative;
+}
+
+.intro, .contact-copy {
+	width: 820px;
+	float: left;
+	padding-right: 40px;
+	min-height:220px;
+}
+
+.copy {
+	width:860px;
+	float:left;
+	min-height:220px;
+}
+
+.copy p {
+	padding-right:40px;
+}
+
+.content h2 {
+	color:#4A7377;
+	font: 400 1.375em/1.38 Montserrat;
+	text-transform:uppercase;
+}
+
+.lower-sidebar {
+	background:#eee;
+	height:352px;
+	width:490px;
+	float:right;
+	padding:30px 45px;
+	text-transform:uppercase;
+}
+
+.lower-sidebar ul {
+	border-bottom:2px solid #d8d8d8 !important;
+}
+
+.lower-sidebar li {
+	background: url("/images/calendar.svg") no-repeat scroll 0% 5% transparent;
+	padding-left:30px;
+}
+
+.lt-ie9 .lower-sidebar li {
+	background: url("/images/calendar.png") no-repeat scroll 0% 5% transparent;
+}
+
+.lower-sidebar h2 {
+	padding-bottom: 20px;
+	font: 1.5em/1.38 Montserrat;
+	color: #353230;
+	margin:0;
+}
+
+.content {
+  margin:0 auto;
+  width: 1440px;
+}
+
+.df-sidebar #sidebar {
+	position:relative;
+	left:0;
+}
+
+#sidebar {
+  	background:#323232;
+	float:right;
+	width: 490px;
+	color:#fff;
+	text-transform:uppercase;
+	padding:30px 45px;
+	height:340px;
+}
+
+#sidebar ul, .lower-sidebar ul {
+	list-style:none;
+	float: left;
+	clear: both;
+	width: 100%;
+	padding:0 0 12px;
+	border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+	margin:0;
+}
+
+#sidebar li {
+	background: url("/images/stopwatch.svg") no-repeat scroll 0% 5% transparent;
+	padding-left:30px;
+}
+
+.lt-ie9 #sidebar li {
+	background: url("/images/stopwatch.png") no-repeat scroll 0% 5% transparent;
+}
+
+#sidebar li a {
+	color:#fff;
+}
+
+#sidebar li a h3, .lower-sidebar li h3 {
+	font-weight:300;
+	margin:0;
+}
+
+#sidebar p, .lower-sidebar p {
+	color:#6ba5b0;
+	margin-top:6px;
+	font:700 1em/1.38 "Roboto Condensed"
+}
+
+#sidebar h2 {
+	font: 400 1.375em/1.38 Montserrat;
+	margin:0;
+	padding-bottom:20px;
+}
+
+span.teal:hover {
+	background:#4a7377;
+}
+
+#sidebar a span.teal, .lower-sidebar a span.teal {
+	color:#fff;
+	text-transform:uppercase;
+}
+
+a.btn {
+		display: block;
+	float: left;
+	margin-top: 30px;
+}
+
+.df-banner {
+	height:400px;
+	overflow:hidden;
+}
+
+
+/*
+* Footer
+*/
+
+footer {
+	background: #6BA5B0;
+	height: 72px;
+	color: white;
+}
+
+#tweets
+
+{display: block;
+float: left;
+width: 1350px;}
+
+#tweets ul {
+	list-style:none;
+	margin:0;
+	padding:10px 0;
+	width:80%;
+}
+
+#tweets li {
+	float:left;
+}
+
+a.tweet_avatar img {
+	float:left;
+}
+
+span.tweet_text {
+	 float: left;
+    width: 69.2002%;
+    min-height: 32px;
+    margin-left: 4%;
+    font-size: 1em;
+    font-weight: 300;
+    line-height: 1.38;
+    color: #FFF;
+}
+
+a.twitter {
+	float: right;
+	width: 32px;
+	height: 32px;
+	margin: 15px 0;
+}
+
+a.twitter {
+   background:url('/images/twitter.svg') no-repeat center center scroll;
+}
+
+.lt-ie9 a.twitter {
+   background:url('/images/twitter.png') no-repeat center center scroll;
+}
+
+a.facebook {
+	float: right;
+	width: 32px;
+	height: 32px;
+	margin: 15px 10px;
+}
+
+a.facebook {
+   background:url('/images/fb.svg') no-repeat center center scroll;
+}
+
+.lt-ie9 a.facebook {
+   background:url('/images/fb.png') no-repeat center center scroll;
+}
+
+/* 
+* Wordpress adds default classes to images as they are inserted. These style those classes, tweak as you wish.
+*/
+
+.alignleft {
+	float: left;
+}
+.alignright {
+	float: right;
+}
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+img.wp-post-image {
+	width:100%;
+	height:auto;
+	
+}
+.wp-caption {
+	max-width: 100%; /* Keep wide captions from overflowing their container. */
+	padding: 4px;
+}
+.wp-caption .wp-caption-text,
+.gallery-caption,
+.entry-caption {
+	font-style: italic;
+	font-size: 12px;
+	font-size: 0.857142857rem;
+	line-height: 2;
+	color: #757575;
+}
+dl.gallery-item {
+	margin: 0;
+}
+.gallery-item a,
+.gallery-caption {
+	width: 90%;
+}
+.gallery-item a {
+	display: block;
+}
+.gallery-caption a {
+	display: inline;
+}
+.gallery-columns-1 .gallery-item a {
+	max-width: 100%;
+	width: auto;
+}
+.gallery .gallery-icon img {
+	height: auto;
+	max-width: 90%;
+	padding: 5%;
+}
+.gallery-columns-1 .gallery-icon img {
+	padding: 3%;
+}
+
+
+
+
+
+
+/*
+	Default form element styling
+*/
+button, span.teal {
+	display: block;
+	float: left;
+	clear: both;
+	padding: 10px 25px;
+	background-color: #58888D;
+	font: 700 1em/1.38 "Roboto Condensed";
+	text-align: center;
+	color: #FFF;
+}
+
+
+button, input, textarea, select {
+	vertical-align: middle;
+}
+/* <button>s get a white border in IE6/7. Fix is at: http://stackoverflow.com/a/4159455 */
+
+ 
+input, textarea, select {
+	border: 1px solid #cdcdcd;
+	color: #444;
+	padding: 0.2em;
+}
+
+input.watermark, textarea.watermark { /* For jquery.watermark */
+	color: #aaa;
+}
+
+input:hover, textarea:hover, select:hover {
+	border: 1px solid #666;
+	color: #444;
+}
+
+input:focus, textarea:focus, select:focus {
+	border: 1px solid #444;
+	color: #000;
+}
+
+button:focus, button:active,
+input:focus, input:active, 
+select:focus, select:active,
+textarea:focus, textarea:active {
+	-webkit-box-shadow: #06f 0 0 7px;
+	box-shadow: #06f 0 0 7px;
+}
+
+input[type="file"]:focus, input[type="file"]:active,
+input[type="radio"]:focus, input[type="radio"]:active,
+input[type="checkbox"]:focus, input[type="checkbox"]:active {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+fieldset, legend {
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.lt-ie8 legend { margin-left: -7px; }
+
+/* align checkboxes, radios, text inputs with their label
+   by: Thierry Koblentz tjkdesign.com/ez-css/css/base.css  */
+input[type="radio"] { vertical-align: text-bottom; }
+input[type="checkbox"] { vertical-align: bottom; }
+.lt-ie8 input[type="checkbox"] { vertical-align: baseline; }
+.lt-ie7 input { vertical-align: text-bottom; }
+
+input.checkbox, input.radio {
+	width: auto !important;
+	background: transparent; /* ie6 */
+	border: none !important; /* ie6 */
+}
+
+button, input[type="submit"] {
+ 	padding: 8px 15px;
+	font-weight: bold;
+	border: none;
+	width: 200px;
+ }
+
+
+ 
+ 
+ 
+ 
+/* 
+ * BF footer link 
+ */
+ 
+p#bf {
+	clear: both;
+	font-size: 11px;
+	font-weight: normal;
+	padding: 4px 0;
+	text-align: right;
+}
+	
+p#bf a {
+	border-bottom: none;
+	font-weight: bold;
+	text-decoration: none;
+	padding-right: 0;
+	background: none;
+}
+	
+p#bf a:hover {
+	color: #9370DB;
+	text-decoration: underline;
+}
+	
+p#bf span a,#bf span a:hover {
+	font-weight: normal;
+	text-decoration: none;
+}
+	
+p#bf, p#bf a, #bf span a:hover {
+	color: grey;
+}
+ 
+/* Race Times page */
+
+.race-times nav a {
+	font-size:1.335em !important;
+}
+
+.race-times #main-content {
+	background:transparent;
+	padding:0;
+	margin:0 auto;
+}
+
+body.race-times {
+	background:#fff;
+}
+
+.race-times h1#title {
+	position:relative;
+	top:0 !important;
+}
+
+.race-times nav {
+	margin-top:49px;
+}
+
+.content-box-header {
+	margin:0;
+	background:#323232;
+}
+
+.content-box-header h3 {
+	margin:0;
+	color:#fff;
+}
+
+.content-box, .content-box-header, ul.content-box-tabs li a.current, .shortcut-button, .notification, .ui-corner-tr, .ui-corner-tl {
+	border-radius:0 !important;
+}
+
+.ui-widget-header {
+	background:#58888d;
+	border:1px solid #58888d;
+}
+
+.dataTables_filter label {
+	color:#fff;
+}
+
+.dataTables_filter input {
+	border:1px solid #58888d;
+}
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ /* 
+ * Non-semantic helper classes 
+ */
+
+.align-center {text-align: center;}
+
+.align-right {text-align: right;}
+
+.float-right {float: right;}
+
+.float-left {float: left;}
+
+.uppercase {text-transform: uppercase;}
+ 
+/* for image replacement */
+.ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
+
+/* Hide for both screenreaders and browsers:   css-discuss.incutio.com/wiki/Screenreader_Visibility */
+.hidden { display: none; visibility: hidden; } 
+
+/* Micro Clearfix: http://nicolasgallagher.com/micro-clearfix-hack/ */
+.cf:before,.cf:after{content:"";display:table;}.cf:after{clear:both;}.cf{*zoom:1;}
+
+
+/* For when the clearfix won't do - use as <br class="clear"> */
+.clear { clear: both; }
+ 
+
+
+/*
+* Media Queries
+*/
+
+/* Smaller than standard 960 (devices and browsers) */
+@media only screen and (max-width: 959px) {}
+
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {}
+
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {}
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {}
+ 
+
+ 
+ 
+
+/* 
+ * print styles, compressed
+ */
+@media print {*{background:transparent !important;color:#444 !important;text-shadow:none !important;}a,a:visited{color:#444 !important;text-decoration:underline;}a:after{content:" (" attr(href) ")";}abbr:after{content:" (" attr(title) ")";}.ir a:after{content:"";}pre,blockquote{border:1px solid #999;page-break-inside:avoid;}thead{display:table-header-group;}tr,img{page-break-inside:avoid;}@page{margin:0.5cm;}p,h2,h3{orphans:3;widows:3;}h2,h3{page-break-after:avoid;}}
+

@@ -3,33 +3,21 @@
 #r @"System.Windows.Forms.DataVisualization.dll"
 
 #load "Types.fs"
+#load "TableTypes.fs"
+#load "HtmlTable.fs"
 #load "HtmlParse.fs"
-//#load "CsvParseYP.fs"
 #load "LapRender.fs"
 
 open FSharp.Data
 open FSharp.Charting
 open System
 open HtmlParse
-//open CsvParseYP
 open Types
 open LapRender
 
 let riderAndLaps = riderAndLapsFromHtml()
-//let riderAndLaps = riderAndLapsFromCsv()
-
-//riderAndLaps |> Seq.groupBy (fun r -> r.lapCount) |> Seq.map(fun (k,riders) -> (k, (riders |> Seq.length ) ) ) |> (printfn "%A")
-
-//let didAllSegments rider = rider.lapCount = 6
 
 riderAndLaps
-//|> Seq.filter didAllSegments
 //|> Seq.filter (fun ral -> ral.rider |> highlight)
 //|> Seq.take 20
 |> render
-
-
-
-riderAndLaps 
-|> mapToRiderAndLapPositions
-|> Seq.iter (printfn ("%A"))

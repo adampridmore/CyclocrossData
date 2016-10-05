@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Types.fs" />
+    <Compile Include="TableTypes.fs" />
     <Compile Include="HtmlTable.fs" />
     <Compile Include="HtmlTableTests.fs" />
     <Compile Include="HtmlParse.fs" />

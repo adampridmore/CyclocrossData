@@ -22,6 +22,7 @@ let urls = [
     @"http://results.smartiming.co.uk/view-race/ycca1617winterround4senior/" // RD4
     ]
 
-urls
+urls.[3] |> Seq.singleton
+//urls
 |> Seq.map riderAndLapsFromHtml
 |> Seq.iter render

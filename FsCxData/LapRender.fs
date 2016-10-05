@@ -68,14 +68,9 @@ let highlight = fun _ -> false
 let toRiderChart rider (laps: int list) (color: System.Drawing.Color) = 
     let name = sprintf "%s(%d)" rider.name (laps |> Seq.last) 
 
-//    let borderWidth = 
-//        match rider |> highlight with
-//        | true -> 5
-//        | false -> 1        
-
     let borderWidth = 5
-        
-    FSharp.Charting.Chart.Line(laps, Name = name, (* Color = color,*) XTitle = "Lap", YTitle = "Position")
+    
+    FSharp.Charting.Chart.Line(laps, Name = name)
     |> FSharp.Charting.Chart.WithStyling(BorderWidth=borderWidth) 
 
 let numberToColor i = 
@@ -83,20 +78,19 @@ let numberToColor i =
     Color.FromArgb(255, randomColor)
 
 let getCharForRiderAndLapPositions riderAndLaps =
-    //let maximumSegmentIndex = riderAndLaps |> Seq.max (r -> r.)
+    let maximumSegmentIndex = 
+        (riderAndLaps 
+        |> Seq.map snd 
+        |> Seq.map Seq.length
+        |> Seq.max) - 1
     
     riderAndLaps
-    //|> Seq.filter (fun ((rider:Rider), _) -> rider|> highlight)
     |> Seq.mapi (fun i (rider, laps) -> toRiderChart rider laps (i |> numberToColor) )
     |> Chart.Combine
-    //|> Chart.WithXAxis(Title="Segment - [Ingleborough(0), Cold Cotes(1), Whernside(2), Ribblehead(3) Pen-y-ghent(4) Finish(5)]")
+    |> Chart.WithXAxis(Title="Lap")
     |> Chart.WithYAxis(Title="Position")
-    //|> Chart.WithArea.AxisX(Minimum=0.0,Maximum=(maximumSegmentIndex |> float))
-    //|> Chart.WithLegend(Enabled=true,Title="Riders", InsideArea=false, Docking=ChartTypes.Docking.Bottom)
+    |> Chart.WithArea.AxisX(Minimum=0.0,Maximum=(maximumSegmentIndex |> float))
     |> Chart.WithLegend(Enabled=true,Title="Riders", InsideArea=false )
-    //|> Chart.WithLegend()
-    //|> Chart.WithLegend(Enabled=true,Title="Riders")  
-    //|> Chart.Save("c:\Temp\CX\chart1.png"); 
     
 let render (riderAndLaps : RiderAndLaps seq) = 
     riderAndLaps 

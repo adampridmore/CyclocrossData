@@ -15,9 +15,13 @@ open HtmlParse
 open Types
 open LapRender
 
-let riderAndLaps = riderAndLapsFromHtml()
+let urls = [
+    @"http://results.smartiming.co.uk/view-race/ycca1617winterround1senior"
+    @"http://results.smartiming.co.uk/view-race/ycca1617winterround2senior"
+    @"http://results.smartiming.co.uk/view-race/ycca1617winterround3senior/" // RD3
+    @"http://results.smartiming.co.uk/view-race/ycca1617winterround4senior/" // RD4
+    ]
 
-riderAndLaps
-//|> Seq.filter (fun ral -> ral.rider |> highlight)
-//|> Seq.take 20
-|> render
+urls
+|> Seq.map riderAndLapsFromHtml
+|> Seq.iter render

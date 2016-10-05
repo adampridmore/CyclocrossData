@@ -82,30 +82,26 @@ let numberToColor i =
     let randomColor = Color.FromArgb(i * 100)
     Color.FromArgb(255, randomColor)
 
-let showCharForRiderAndLapPositions riderAndLaps =
+let getCharForRiderAndLapPositions riderAndLaps =
     //let maximumSegmentIndex = riderAndLaps |> Seq.max (r -> r.)
     
-    let chart = 
-        riderAndLaps
-        //|> Seq.filter (fun ((rider:Rider), _) -> rider|> highlight)
-        |> Seq.mapi (fun i (rider, laps) -> toRiderChart rider laps (i |> numberToColor) )
-        |> Chart.Combine
-        //|> Chart.WithXAxis(Title="Segment - [Ingleborough(0), Cold Cotes(1), Whernside(2), Ribblehead(3) Pen-y-ghent(4) Finish(5)]")
-        |> Chart.WithYAxis(Title="Position")
-        //|> Chart.WithArea.AxisX(Minimum=0.0,Maximum=(maximumSegmentIndex |> float))
-        //|> Chart.WithLegend(Enabled=true,Title="Riders", InsideArea=false, Docking=ChartTypes.Docking.Bottom)
-        |> Chart.WithLegend(Enabled=true,Title="Riders", InsideArea=false )
-        //|> Chart.WithLegend()
-    //    |> Chart.WithLegend(Enabled=true,Title="Riders")  
-        //|> Chart.Save("c:\Temp\CX\chart1.png"); 
-    //|> Chart.Show
-
-    chart |> Chart.Show
+    riderAndLaps
+    //|> Seq.filter (fun ((rider:Rider), _) -> rider|> highlight)
+    |> Seq.mapi (fun i (rider, laps) -> toRiderChart rider laps (i |> numberToColor) )
+    |> Chart.Combine
+    //|> Chart.WithXAxis(Title="Segment - [Ingleborough(0), Cold Cotes(1), Whernside(2), Ribblehead(3) Pen-y-ghent(4) Finish(5)]")
+    |> Chart.WithYAxis(Title="Position")
+    //|> Chart.WithArea.AxisX(Minimum=0.0,Maximum=(maximumSegmentIndex |> float))
+    //|> Chart.WithLegend(Enabled=true,Title="Riders", InsideArea=false, Docking=ChartTypes.Docking.Bottom)
+    |> Chart.WithLegend(Enabled=true,Title="Riders", InsideArea=false )
+    //|> Chart.WithLegend()
+    //|> Chart.WithLegend(Enabled=true,Title="Riders")  
+    //|> Chart.Save("c:\Temp\CX\chart1.png"); 
     
-let render (riderAndLaps: RiderAndLaps seq) = 
+let render (riderAndLaps : RiderAndLaps seq) = 
     riderAndLaps 
     |> mapToRiderAndLapPositions
     |> Seq.sortBy (fun (rider,_) -> rider |> highlight)
-    |> showCharForRiderAndLapPositions
-
+    |> getCharForRiderAndLapPositions
+    |> Chart.Show
 

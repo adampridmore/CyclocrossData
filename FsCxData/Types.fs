@@ -2,11 +2,6 @@
 
 open System
 
-type LapColumn = { 
-    index: int; 
-    lapNumber: int
-}  
-
 [<StructuredFormatDisplay("LapTime {lapTime}, cumulativeLapTime {cumulativeLapTime}")>]
 type Lap = {
     lapTime : TimeSpan

@@ -5,7 +5,7 @@ open System
 open Types
 
 [<Literal>] 
-let Filename = __SOURCE_DIRECTORY__ + @"\..\..\CX\ThreePeaks2016\Results.csv"
+let Filename = __SOURCE_DIRECTORY__ + @"\..\Data\ThreePeaks2016\Results.csv"
 
 let data = CsvFile.Load(Filename)
 

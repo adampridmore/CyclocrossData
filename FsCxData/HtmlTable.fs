@@ -14,7 +14,7 @@ type Table = {
     rows : Row list
 }
 
-let Load (url:String) = 
+let Load (htmlDocument:HtmlDocument) = 
     let parseColumns (tableNode:HtmlNode) = 
         let thead = tableNode.Descendants("thead") |> Seq.head
         let theardTr = thead.Descendants("tr") |> Seq.head
@@ -44,11 +44,16 @@ let Load (url:String) =
         rows = node |> parseRows;
     }
 
-    HtmlDocument.Load(url).Descendants("table") 
-    |> Seq.map htmlToTable
+    htmlDocument.Descendants("table") |> Seq.map htmlToTable
+
+let LoadByUrl (url:String) = 
+    HtmlDocument.Load(url) |> Load
+
+let LoadHtml (id:String) (html:System.IO.TextReader) = 
+    HtmlDocument.Load(html) |> Load 
 
 let LoadById (id:String) (url:String) = 
-    Load(url) 
+    LoadByUrl(url) 
     |> Seq.filter(fun t -> t.id = id) 
     |> Seq.head
 

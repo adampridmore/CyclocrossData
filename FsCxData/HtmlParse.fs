@@ -33,6 +33,7 @@ let parseTimeSpan (text:string) =
         ("00:" + text) |> TimeSpan.Parse
     with | _ -> failwithf "Error parsing %s" text
 
+
 let lapsToCumulative (laps: TimeSpan seq) =
     let mapping (state:TimeSpan) (lap:TimeSpan) =
         let total = lap + state

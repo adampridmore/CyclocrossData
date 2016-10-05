@@ -4,7 +4,7 @@ open FSharp.Data
 open FSharp.Charting
 open System
 open HtmlParse
-open CsvParse
+open CsvParseYP
 open Types
 open LapRender
 

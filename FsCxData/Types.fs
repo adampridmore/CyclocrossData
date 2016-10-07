@@ -13,9 +13,10 @@ type Rider = {
     club: string
 }
 
-[<StructuredFormatDisplay("RiderAndLaps {rider}, lapCount {lapCount}")>]
-type RiderAndLaps = {
+[<StructuredFormatDisplay("RiderRace {rider}, lapCount {lapCount}, placeOverall {placeOverall}")>]
+type RiderRace = {
     rider: Rider
     laps : Lap list
-    lapCount : int
+    lapCount : int;
+    placeOverall : int Option;
 }

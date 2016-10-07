@@ -13,6 +13,7 @@ let headers = data.Headers
 
 let nameColumnIndex = headers.Value |> Seq.findIndex (fun x -> x = "Name")
 let clubColumnIndex = headers.Value |> Seq.findIndex (fun x -> x = "Club")
+let posNoColumnIndex = headers.Value |> Seq.findIndex (fun x -> x = "Pos")
 
 let isSegmentColumnName (name:String) = 
     let segmentColumNames = ["Ingleborough";"Cold Cotes";"Whernside";"Ribblehead";"Pen-y-ghent";"Finish"]
@@ -37,12 +38,29 @@ let rowToLaps (row : CsvRow) =
     |> Seq.filter (fun x -> x.StartsWith("-") |> not)
     |> Seq.map parseTimeSpan
 
+let justNumbers (value:string) = 
+    let chars = 
+        value.ToCharArray() 
+        |> Seq.filter (fun c -> Char.IsDigit(c))
+        |> Seq.toArray
+    new String(chars)
+
+let tryInt32 value = 
+    let couldParse, parsedValue = Int32.TryParse(value)
+    match couldParse with 
+    | true -> parsedValue |> Some
+    | false -> None
+
+let parsePosNo value = 
+    value |> justNumbers |> tryInt32
+        
 let parseCsvRow (row:CsvRow) = 
     let name = row.Item(nameColumnIndex)
     let club = row.Item(clubColumnIndex)
 
     let lapsTimes = row |> rowToLaps
     let cumulativeLaps = lapsTimes 
+    let positionOverall = row.Item(posNoColumnIndex) |> parsePosNo
     
     let laps = 
         lapsTimes 
@@ -54,9 +72,9 @@ let parseCsvRow (row:CsvRow) =
     { 
         rider = rider ;
         laps = laps |> Seq.toList ; 
-        lapCount = laps |> Seq.length
+        lapCount = laps |> Seq.length;
+        placeOverall = positionOverall;
     }
-
 
 
 let riderAndLapsFromCsv() = 

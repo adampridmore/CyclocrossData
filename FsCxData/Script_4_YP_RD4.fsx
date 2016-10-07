@@ -26,3 +26,10 @@ urls.[3] |> Seq.singleton
 //urls
 |> Seq.map riderAndLapsFromHtml
 |> Seq.iter render
+
+
+//urls
+//|> Seq.map riderAndLapsFromHtml
+
+
+

@@ -92,7 +92,7 @@ let getCharForRiderAndLapPositions riderAndLaps =
     |> Chart.WithArea.AxisX(Minimum=0.0,Maximum=(maximumSegmentIndex |> float))
     |> Chart.WithLegend(Enabled=true,Title="Riders", InsideArea=false )
     
-let render (riderAndLaps : RiderAndLaps seq) = 
+let render (riderAndLaps : RiderRace seq) = 
     riderAndLaps 
     |> mapToRiderAndLapPositions
     |> Seq.sortBy (fun (rider,_) -> rider |> highlight)

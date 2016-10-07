@@ -20,6 +20,7 @@ let headers = data.Headers
 let firstNameColumnIndex = headers.Value |> Seq.findIndex (fun x -> x = "First Name")
 let surnameColumnIndex = headers.Value |> Seq.findIndex (fun x -> x = "Surname")
 let clubColumnIndex = headers.Value |> Seq.findIndex (fun x -> x = "Club")
+let placeOverallColumnIndex = headers.Value |> Seq.findIndex (fun x -> x = "Place Overall")
 
 let isLapColumnName (name:String) = 
     match name with
@@ -59,9 +60,11 @@ let parseCsvRow (row:CsvRow) =
     let firstname = row.Item(firstNameColumnIndex)
     let surname = row.Item(surnameColumnIndex)
     let club = row.Item(clubColumnIndex)
+    let placeOverall = row.Item(placeOverallColumnIndex) |> int32 |> Some
     
     let lapsTimes = row |> rowToLaps
     let cumulativeLaps = lapsTimes |> lapsToCumulative
+
     
     let laps = 
         lapsTimes 
@@ -73,7 +76,8 @@ let parseCsvRow (row:CsvRow) =
     { 
         rider = rider ;
         laps = laps |> Seq.toList ; 
-        lapCount = laps |> Seq.length
+        lapCount = laps |> Seq.length;
+        placeOverall= placeOverall;
     }
 
 

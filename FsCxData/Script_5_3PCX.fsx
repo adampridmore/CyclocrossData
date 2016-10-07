@@ -23,13 +23,13 @@ let riderAndLaps = riderAndLapsFromCsv()
 
 let didAllSegments rider = rider.lapCount = 6
 
-riderAndLaps
-|> Seq.filter didAllSegments
-//|> Seq.filter (fun ral -> ral.rider |> highlight)
-//|> Seq.take 20
-|> render
+//riderAndLaps
+//|> Seq.filter didAllSegments
+////|> Seq.filter (fun ral -> ral.rider |> highlight)
+////|> Seq.take 20
+//|> render
 
 riderAndLaps 
-|> mapToRiderAndLapPositions
+//|> mapToRiderAndLapPositions
 |> Seq.iter (printfn ("%A"))
 

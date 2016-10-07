@@ -13,6 +13,7 @@ let riderAndLapsFromHtml(url) =
     let firstNameColumnIndex = headers |> Seq.findIndex (fun x -> x = "First Name")
     let surnameColumnIndex = headers |> Seq.findIndex (fun x -> x = "Surname")
     let clubColumnIndex = headers |> Seq.findIndex (fun x -> x = "Club")
+    let placeOverallIndex = headers |> Seq.findIndex(fun x -> x = "Place Overall")
 
     let isLapColumnName (name:String) = 
         match name with
@@ -52,6 +53,7 @@ let riderAndLapsFromHtml(url) =
         let firstname = row.values.[firstNameColumnIndex]
         let surname = row.values.[surnameColumnIndex]
         let club = row.values.[clubColumnIndex]
+        let placeOverall = row.values.[placeOverallIndex] |> int32 |> Some
     
         let lapsTimes = row |> rowToLaps
         let cumulativeLaps = lapsTimes |> lapsToCumulative
@@ -65,7 +67,8 @@ let riderAndLapsFromHtml(url) =
         { 
             rider = rider ;
             laps = laps |> Seq.toList ; 
-            lapCount = laps |> Seq.length
+            lapCount = laps |> Seq.length;
+            placeOverall = placeOverall;
         }
 
 

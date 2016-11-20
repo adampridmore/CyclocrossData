@@ -1,0 +1,86 @@
+﻿////#r @"System.Windows.Forms.DataVisualization.dll"
+#r @"..\packages\XPlot.GoogleCharts.1.4.2\lib\net45\XPlot.GoogleCharts.dll"
+#r @"..\packages\Google.DataTable.Net.Wrapper.3.1.2.0\lib\Google.DataTable.Net.Wrapper.dll"
+#r @"..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll"
+
+#r @"..\packages\FSharp.Data.2.3.2\lib\net40\FSharp.Data.dll"
+#r @"..\packages\FSharp.Charting.0.90.14\lib\net40\FSharp.Charting.dll"
+#r @"System.Windows.Forms.DataVisualization.dll"
+
+#load "Types.fs"
+#load "TableTypes.fs"
+#load "HtmlTable.fs"
+#load "HtmlParse.fs"
+#load "LapRender.fs"
+
+open System
+open HtmlParse
+open Types
+open LapRender
+
+open XPlot.GoogleCharts
+
+//let labels = ["Dave"; "Fred"] 
+//
+//let data2 = [
+//    [(1,1);(2,1);(3,2)]
+//    [(1,2);(2,2);(3,1)];
+//]
+//
+//let options =
+//    Options( 
+//        title = "CX Race Lap Chart", 
+//        legend = Legend(position = "right") 
+//    )
+//
+//data2
+//|> XPlot.GoogleCharts.Chart.Line
+//|> Chart.WithLabels labels
+//|> Chart.WithXTitle "Lap"
+//|> Chart.WithYTitle "Position"
+//|> Chart.WithOptions options
+////|> Chart.WithHeight 1000
+//|> Chart.Show
+
+let title ="YP Seniors - V40's Lap Chart for RD8 Shibden Park"
+let url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround8senior/"       // RD8
+
+let riderAndLapPositions = 
+    url
+    |> riderAndLapsFromHtml
+    |> mapToRiderAndLapPositions
+
+let lapPositionToOneOffset x = x + 1
+let lapPositionToOneOffset2 x = x + 1
+
+let data = 
+    riderAndLapPositions
+    |> Seq.map (fun (rider, laps) -> laps |> Seq.mapi(fun i lapPosition -> (i,lapPosition |> lapPositionToOneOffset)))
+
+let labels = 
+    let riderToName (rider, lapPosition) =
+        sprintf "%s (%d)" rider.name (lapPosition |> Seq.last |> lapPositionToOneOffset)
+    
+    riderAndLapPositions 
+    |> Seq.map riderToName
+    
+
+let hAxis = Axis(title = "Lap")
+let vAxis = Axis(title = "Position")
+
+let options =
+    Options( 
+        title = title, 
+        legend = Legend(position = "right"),
+        height = 1000, 
+        //width = 1200,
+        hAxis = hAxis, 
+        vAxis = vAxis
+    )
+
+data 
+|> XPlot.GoogleCharts.Chart.Line
+|> Chart.WithLabels labels
+|> Chart.WithOptions options
+|> Chart.Show
+

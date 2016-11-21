@@ -1,5 +1,4 @@
-﻿////#r @"System.Windows.Forms.DataVisualization.dll"
-#r @"..\packages\XPlot.GoogleCharts.1.4.2\lib\net45\XPlot.GoogleCharts.dll"
+﻿#r @"..\packages\XPlot.GoogleCharts.1.4.2\lib\net45\XPlot.GoogleCharts.dll"
 #r @"..\packages\Google.DataTable.Net.Wrapper.3.1.2.0\lib\Google.DataTable.Net.Wrapper.dll"
 #r @"..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll"
 
@@ -42,8 +41,15 @@ open XPlot.GoogleCharts
 ////|> Chart.WithHeight 1000
 //|> Chart.Show
 
-let title ="YP Seniors - V40's Lap Chart for RD8 Shibden Park"
-let url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround8senior/"       // RD8
+let title ="YP Seniors & V40's Lap Chart for RD8 Shibden Park"
+let url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround8senior/"       // RD8 Senion + V40
+let maxLaps = 10
+let maxPositions = 8
+
+//let title ="YP Female & V45+ Lap Chart for RD8 Shibden Park"
+//let url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround8v50andwomen/"       // RD8 - V50 + FM
+//let maxLaps = 6
+//let maxPositions = 9
 
 let riderAndLapPositions = 
     url
@@ -65,17 +71,18 @@ let labels =
     |> Seq.map riderToName
     
 
-let hAxis = Axis(title = "Lap")
-let vAxis = Axis(title = "Position")
+let hAxis = Axis(title = "Lap", gridlines= Gridlines(count=maxLaps))
+let vAxis = Axis(title = "Position", gridlines = Gridlines(count=maxPositions))
 
 let options =
     Options( 
         title = title, 
         legend = Legend(position = "right"),
         height = 1000, 
-        //width = 1200,
+        width = 1200,
         hAxis = hAxis, 
-        vAxis = vAxis
+        vAxis = vAxis,
+        lineWidth = 5
     )
 
 data 

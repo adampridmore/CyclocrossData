@@ -78,6 +78,8 @@ let riderAndLapsFromHtml(url) =
     |> Seq.map parseRow 
 //    |> Seq.take 1
     |> Seq.filter (fun r -> r.rider.name |> String.IsNullOrWhiteSpace |> not)
+    |> Seq.filter (fun r -> r.lapCount <> 0)
+    |> Seq.sortBy (fun r -> r.rider.name)
     |> Seq.toList
 
  

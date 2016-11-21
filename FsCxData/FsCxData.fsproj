@@ -65,6 +65,7 @@
     <None Include="Script_5_3PCX.fsx" />
     <None Include="Script_6.fsx" />
     <None Include="Script7_XPlot.fsx" />
+    <None Include="Script8_XPlot_LapTimes.fsx" />
     <None Include="Chart_Scratch.fsx" />
     <None Include="DateGenerator.fsx" />
     <Content Include="packages.config" />

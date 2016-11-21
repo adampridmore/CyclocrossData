@@ -21,8 +21,8 @@ open XPlot.GoogleCharts
 
 let title ="YP Seniors & V40's Lap Chart for RD8 Shibden Park"
 let url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround8senior/"       // RD8 Senior + V40
-let maxLaps = 10
-let maxPositions = 8
+let horizontalGridLineCount = 11
+let verticalGridLineCount = 7
 
 let riderAndLapPositions = 
     url
@@ -38,8 +38,8 @@ let printRider name (laps:seq<int*float>) =
     laps 
     |> Seq.iter (fun (lap, seconds) -> printfn "%d (%fd)" lap seconds )
 
-let hAxis = Axis(title = "Lap", gridlines= Gridlines(count=maxLaps))
-let vAxis = Axis(title = "Cumulative Seconds", gridlines = Gridlines(count=maxPositions))
+let hAxis = Axis(title = "Cumulative Seconds", gridlines= Gridlines(count=verticalGridLineCount))
+let vAxis = Axis(title = "Lap", gridlines = Gridlines(count=horizontalGridLineCount))
 
 let labels = 
     riderAndLapPositions 
@@ -49,7 +49,7 @@ let options =
     Options( 
         title = title, 
         legend = Legend(position = "right"),
-        height = 2000, 
+        height = 1200, 
         width = 1600,
         hAxis = hAxis, 
         vAxis = vAxis,

@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FsCxData", "FsCxData\FsCxData.fsproj", "{EF8BC31F-2499-418A-B7F7-F9B7DA748165}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{52EDDE92-EA5D-4A04-B12E-6048A529B591}"
+	ProjectSection(SolutionItems) = preProject
+		BuildBugetPackage.bat = BuildBugetPackage.bat
+		Package.nuspec = Package.nuspec
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

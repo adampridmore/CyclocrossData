@@ -41,15 +41,30 @@ open XPlot.GoogleCharts
 ////|> Chart.WithHeight 1000
 //|> Chart.Show
 
-let title ="YP Seniors & V40's Lap Chart for RD8 Shibden Park"
-let url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround8senior/"       // RD8 Senion + V40
-let maxLaps = 10
-let maxPositions = 8
+//let title ="YP Seniors & V40's Lap Chart for RD8 Shibden Park"
+//let url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround8senior/"       // RD8 Senion + V40
+//let maxLaps = 10
+//let maxPositions = 8
 
 //let title ="YP Female & V45+ Lap Chart for RD8 Shibden Park"
 //let url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround8v50andwomen/"       // RD8 - V50 + FM
 //let maxLaps = 6
 //let maxPositions = 9
+
+
+
+//let title ="North of England Championships Seniors Lap Chart (York)"
+//let url = @"http://results.smartiming.co.uk/view-race/nofenglandchamps2016seniors/"
+//let maxLaps = 9
+//let maxPositions = 10
+
+let title ="North of England Championships V40 Junior Lap Chart (York)"
+let url = @"http://results.smartiming.co.uk/view-race/nofenglandchamps2016v40andjuniors/"
+let maxLaps = 6
+let maxPositions = 10
+
+
+
 
 let riderAndLapPositions = 
     url
@@ -78,7 +93,7 @@ let options =
     Options( 
         title = title, 
         legend = Legend(position = "right"),
-        height = 1000, 
+        height = 1600, 
         width = 1200,
         hAxis = hAxis, 
         vAxis = vAxis,

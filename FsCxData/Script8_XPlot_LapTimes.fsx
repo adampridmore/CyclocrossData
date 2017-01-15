@@ -19,8 +19,13 @@ open LapRender
 
 open XPlot.GoogleCharts
 
-let title ="YP Seniors & V40's Lap Chart for RD8 Shibden Park"
-let url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround8senior/"       // RD8 Senior + V40
+//let title ="YP Seniors & V40's Lap Chart for RD8 Shibden Park"
+//let url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround8senior/"       // RD8 Senior + V40
+//let horizontalGridLineCount = 11
+//let verticalGridLineCount = 7
+
+let title ="North of England Championships Seniors Lap Chart (York) (Times)"
+let url = @"http://results.smartiming.co.uk/view-race/nofenglandchamps2016seniors/"       
 let horizontalGridLineCount = 11
 let verticalGridLineCount = 7
 

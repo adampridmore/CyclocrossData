@@ -58,13 +58,15 @@ open XPlot.GoogleCharts
 //let maxLaps = 9
 //let maxPositions = 10
 
-let title ="North of England Championships V40 Junior Lap Chart (York)"
-let url = @"http://results.smartiming.co.uk/view-race/nofenglandchamps2016v40andjuniors/"
-let maxLaps = 6
+//let title ="North of England Championships V40 Junior Lap Chart (York)"
+//let url = @"http://results.smartiming.co.uk/view-race/nofenglandchamps2016v40andjuniors/"
+//let maxLaps = 6
+//let maxPositions = 10
+
+let title ="Ilkely Cyclocross 2017 - Seniors & V40's Lap Chart"
+let url = @"http://results.smartiming.co.uk/view-race/ilkleysenior/"
+let maxLaps = 5
 let maxPositions = 10
-
-
-
 
 let riderAndLapPositions = 
     url

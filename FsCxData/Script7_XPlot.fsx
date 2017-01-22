@@ -63,8 +63,13 @@ open XPlot.GoogleCharts
 //let maxLaps = 6
 //let maxPositions = 10
 
-let title ="Ilkely Cyclocross 2017 - Seniors & V40's Lap Chart"
-let url = @"http://results.smartiming.co.uk/view-race/ilkleysenior/"
+//let title ="Ilkely Cyclocross 2017 - Seniors & V40's Lap Chart"
+//let url = @"http://results.smartiming.co.uk/view-race/ilkleysenior/"
+//let maxLaps = 5
+//let maxPositions = 10
+
+let title ="Wentworth Castle Cyclocross 2017 - Rd9 - Seniors & V40's Lap Chart"
+let url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround9senior/"
 let maxLaps = 5
 let maxPositions = 10
 

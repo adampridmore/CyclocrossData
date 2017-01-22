@@ -24,8 +24,18 @@ open XPlot.GoogleCharts
 //let horizontalGridLineCount = 11
 //let verticalGridLineCount = 7
 
-let title ="North of England Championships Seniors Lap Chart (York) (Times)"
-let url = @"http://results.smartiming.co.uk/view-race/nofenglandchamps2016seniors/"       
+//let title ="North of England Championships Seniors Lap Chart (York) (Times)"
+//let url = @"http://results.smartiming.co.uk/view-race/nofenglandchamps2016seniors/"       
+//let horizontalGridLineCount = 11
+//let verticalGridLineCount = 7
+
+//let title ="Ilkely Cyclocross 2017 - Seniors & V40's Time Chart"
+//let url = @"http://results.smartiming.co.uk/view-race/ilkleysenior/"
+//let horizontalGridLineCount = 11
+//let verticalGridLineCount = 7
+
+let title ="Wentworth Castle Cyclocross 2017 - Seniors & V40's Time Chart"
+let url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround9senior/"
 let horizontalGridLineCount = 11
 let verticalGridLineCount = 7
 

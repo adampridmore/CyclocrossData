@@ -10,10 +10,16 @@ let riderAndLapsFromHtml(url) =
 
     let headers = data.columns
 
-    let firstNameColumnIndex = headers |> Seq.findIndex (fun x -> x = "First Name")
-    let surnameColumnIndex = headers |> Seq.findIndex (fun x -> x = "Surname")
-    let clubColumnIndex = headers |> Seq.findIndex (fun x -> x = "Club")
-    let placeOverallIndex = headers |> Seq.findIndex(fun x -> x = "Place Overall")
+    let getColumnIndex name = 
+        headers 
+        |> Seq.findIndex (fun x -> x = name)
+
+    let armColumnIndex = "Arm" |> getColumnIndex
+    let bibColumnIndex = "Bib" |> getColumnIndex
+    let firstNameColumnIndex = "First Name" |> getColumnIndex
+    let surnameColumnIndex = "Surname"|> getColumnIndex
+    let clubColumnIndex = "Club" |> getColumnIndex
+    let placeOverallIndex = "Place Overall" |> getColumnIndex
 
     let isLapColumnName (name:String) = 
         match name with
@@ -53,8 +59,10 @@ let riderAndLapsFromHtml(url) =
         let firstname = row.values.[firstNameColumnIndex]
         let surname = row.values.[surnameColumnIndex]
         let club = row.values.[clubColumnIndex]
-        let placeOverall = row.values.[placeOverallIndex] |> int32 |> Some
-    
+        let placeOverall = row.values.[placeOverallIndex] |> int32
+//        let armNumber = row.values.[armColumnIndex] |> int32
+        let bibNumber = row.values.[bibColumnIndex] |> int32
+
         let lapsTimes = row |> rowToLaps
         let cumulativeLaps = lapsTimes |> lapsToCumulative
     
@@ -62,17 +70,19 @@ let riderAndLapsFromHtml(url) =
             Seq.zip lapsTimes cumulativeLaps 
             |> Seq.map (fun (l, cl) -> { lapTime = l ; cumulativeLapTime = cl})
 
-        let rider = { name = (sprintf "%s %s" firstname surname); club = club }
+        let name =
+            match firstname with
+            | "Unknown" -> (sprintf "Unknown Bib:%d" bibNumber)
+            | _ -> (sprintf "%s %s" firstname surname)
+
+        let rider = { name = name; club = club }
 
         { 
             rider = rider ;
             laps = laps |> Seq.toList ; 
             lapCount = laps |> Seq.length;
-            placeOverall = placeOverall;
+            placeOverall = placeOverall |> Some;
         }
-
-
-
 
     data.rows 
     |> Seq.map parseRow 

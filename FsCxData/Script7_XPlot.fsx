@@ -68,8 +68,13 @@ open XPlot.GoogleCharts
 //let maxLaps = 5
 //let maxPositions = 10
 
-let title ="Wentworth Castle Cyclocross 2017 - Rd9 - Seniors & V40's Lap Chart"
-let url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround9senior/"
+//let title ="Wentworth Castle Cyclocross 2017 - Rd9 - Seniors & V40's Lap Chart"
+//let url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround9senior/"
+//let maxLaps = 5
+//let maxPositions = 10
+
+let title ="Yorkshire Points Summer Cyclocross 2017 - Seniors & V40's Time Chart"
+let url = @"http://results.smartiming.co.uk/view-race/yccasummer2017rd1over14/"
 let maxLaps = 5
 let maxPositions = 10
 
@@ -92,7 +97,6 @@ let labels =
     riderAndLapPositions 
     |> Seq.map riderToName
     
-
 let hAxis = Axis(title = "Lap", gridlines= Gridlines(count=maxLaps))
 let vAxis = Axis(title = "Position", gridlines = Gridlines(count=maxPositions))
 
@@ -112,4 +116,3 @@ data
 |> Chart.WithLabels labels
 |> Chart.WithOptions options
 |> Chart.Show
-

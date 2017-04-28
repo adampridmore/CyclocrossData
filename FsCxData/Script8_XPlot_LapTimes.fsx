@@ -34,8 +34,13 @@ open XPlot.GoogleCharts
 //let horizontalGridLineCount = 11
 //let verticalGridLineCount = 7
 
-let title ="Wentworth Castle Cyclocross 2017 - Seniors & V40's Time Chart"
-let url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround9senior/"
+//let title ="Wentworth Castle Cyclocross 2017 - Seniors & V40's Time Chart"
+//let url = @"http://results.smartiming.co.uk/view-race/ycca1617winterround9senior/"
+//let horizontalGridLineCount = 11
+//let verticalGridLineCount = 7
+
+let title ="Yorkshire Points Summer Cyclocross 2017 - Seniors & V40's Time Chart"
+let url = @"http://results.smartiming.co.uk/view-race/yccasummer2017rd1over14/"
 let horizontalGridLineCount = 11
 let verticalGridLineCount = 7
 

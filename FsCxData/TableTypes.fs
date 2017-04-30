@@ -5,7 +5,7 @@ type Row = {
 }
 
 type Table = {
-    id : string
+    id : string Option
     columns: string array
     rows : Row array
 }

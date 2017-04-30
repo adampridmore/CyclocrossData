@@ -29,7 +29,11 @@ let Load (htmlDocument:HtmlDocument) =
         |> Seq.map parseRow
     
     let htmlToTable (node : HtmlNode) = {
-        id = node.Attribute("id").Value();
+        id = 
+            match node.TryGetAttribute("id") with
+            | Some(id) -> Some(id.Value())
+            | _ -> None
+            
         columns = node |> parseColumns |> Seq.toArray;
         rows = node |> parseRows |> Seq.toArray
     }
@@ -44,7 +48,8 @@ let LoadHtml (id:String) (html:System.IO.TextReader) =
 
 let LoadById (id:String) (url:String) = 
     LoadByUrl(url) 
-    |> Seq.filter(fun t -> t.id = id) 
+    |> Seq.filter (fun t -> t.id.IsSome)
+    |> Seq.filter(fun t -> t.id.Value = id) 
     |> Seq.head
 
 

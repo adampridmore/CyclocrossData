@@ -13,13 +13,25 @@ let loadHtmlDoc (url:string) = HtmlDocument.Load(url)
 let descendantsDoc (name:string) (node:HtmlDocument) = node.Descendants(name)
 let descendants (name:string) (node:HtmlNode) = node.Descendants(name)
 
+type rider = {
+    bib : string
+    finishTime: TimeSpan Option
+    name : string
+}
+
+let tryParseTimeSpan (text:string) = 
+    match TimeSpan.TryParse(text) with
+    | true, parsed -> Some(parsed)
+    | false, _ -> None
+
 let loadRowsForUrl (url:string) =
     let parseRow (rowNode:HtmlNode) = 
         let row = rowNode |> descendants("td") |> Seq.toArray
-        let bib = row.[0].InnerText()
-        let finishTime = row.[1].InnerText()
-        let name = row.[2].InnerText()
-        (bib,finishTime,name)
+        {
+            bib = row.[0].InnerText()
+            finishTime = row.[1].InnerText() |> tryParseTimeSpan
+            name = row.[2].InnerText()
+        }
 
     url 
     |> loadHtmlDoc

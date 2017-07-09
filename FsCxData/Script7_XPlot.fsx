@@ -73,10 +73,35 @@ open XPlot.GoogleCharts
 //let maxLaps = 5
 //let maxPositions = 10
 
-let title ="Yorkshire Points Summer Cyclocross 2017 - Seniors & V40's Time Chart"
-let url = @"http://results.smartiming.co.uk/view-race/yccasummer2017rd1over14/"
+//let title ="Yorkshire Points Summer Cyclocross 2017 - Seniors & V40's Time Chart"
+//let url = @"http://results.smartiming.co.uk/view-race/yccasummer2017rd1over14/"
+//let maxLaps = 5
+//let maxPositions = 10
+
+//let title ="Yorkshire Points Summer Cyclocross 2017 Rd4 - Seniors & V40's Time Chart"
+//let url = @"http://results.smartiming.co.uk/view-race/yccasummer2017rd4over14/"
+//let maxLaps = 5
+//let maxPositions = 10
+
+//let title ="Yorkshire Points Summer Cyclocross 2017 Rd5 Wakefield - Seniors & V40's Time Chart"
+//let url = @"http://results.smartiming.co.uk/view-race/yccasummer2017rd5over14/"
+//let maxLaps = 5
+//let maxPositions = 10
+
+//let title ="Yorkshire Points Summer Cyclocross 2017 Otley - Juniors & Seniors Time Chart"
+//let url = @"http://results.smartiming.co.uk/view-race/yccasummer2017otleysenjunmen/"
+//let maxLaps = 5
+//let maxPositions = 14
+
+
+let title ="Yorkshire Points Summer Cyclocross 2017 Otley - Vet & Womens"
+let url = @"http://results.smartiming.co.uk/view-race/yccasummer2017otleyvetwomen/"
 let maxLaps = 5
-let maxPositions = 10
+let maxPositions = 14
+
+
+
+
 
 let riderAndLapPositions = 
     url

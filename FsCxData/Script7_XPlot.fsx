@@ -93,15 +93,30 @@ open XPlot.GoogleCharts
 //let maxLaps = 5
 //let maxPositions = 14
 
+//let title ="Yorkshire Points Summer Cyclocross 2017 Otley - Vet & Womens"
+//let url = @"http://results.smartiming.co.uk/view-race/yccasummer2017otleyvetwomen/"
+//let maxLaps = 5
+//let maxPositions = 14
 
-let title ="Yorkshire Points Summer Cyclocross 2017 Otley - Vet & Womens"
-let url = @"http://results.smartiming.co.uk/view-race/yccasummer2017otleyvetwomen/"
+//let title ="Yorkshire Points Winter Cyclocross 2017 Rd2 - Temple Newsham - SEN + V40"
+//let url = @"http://results.smartiming.co.uk/view-race/ycca1718winterseriesr2senv40/"
+//let maxLaps = 5
+//let maxPositions = 14
+
+//let title ="Yorkshire Points Winter Cyclocross 2017 Rd3 - Bedale - SEN + V40"
+//let url = @"http://results.smartiming.co.uk/view-race/ycca1718winterseriesr3senv40/"
+//let maxLaps = 5
+//let maxPositions = 14
+
+//let title ="Yorkshire Points Winter Cyclocross 2017 Rd4 - Skipton - SEN + V40"
+//let url = @"http://results.smartiming.co.uk/view-race/ycca1718winterseriesr4senv40/"
+//let maxLaps = 5
+//let maxPositions = 14
+
+let title ="Yorkshire Points Winter Cyclocross 2017 Rd5 - Huddersfield - SEN + V40"
+let url = @"http://results.smartiming.co.uk/view-race/ycca1718winterseriesr5senv40/"
 let maxLaps = 5
 let maxPositions = 14
-
-
-
-
 
 let riderAndLapPositions = 
     url
@@ -136,7 +151,7 @@ let options =
         lineWidth = 5
     )
 
-data 
+data
 |> XPlot.GoogleCharts.Chart.Line
 |> Chart.WithLabels labels
 |> Chart.WithOptions options

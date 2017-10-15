@@ -151,8 +151,14 @@ let options =
         lineWidth = 5
     )
 
-data
-|> XPlot.GoogleCharts.Chart.Line
+let setChartId title (chart:GoogleChart) =
+    chart.Id <- title  
+    chart
+      
+
+data 
+|> XPlot.GoogleCharts.Chart.Line 
+|> setChartId title
 |> Chart.WithLabels labels
 |> Chart.WithOptions options
 |> Chart.Show

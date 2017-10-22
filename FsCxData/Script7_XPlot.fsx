@@ -113,10 +113,19 @@ open XPlot.GoogleCharts
 //let maxLaps = 5
 //let maxPositions = 14
 
-let title ="Yorkshire Points Winter Cyclocross 2017 Rd5 - Huddersfield - SEN + V40"
-let url = @"http://results.smartiming.co.uk/view-race/ycca1718winterseriesr5senv40/"
+//let title ="Yorkshire Points Winter Cyclocross 2017 Rd5 - Huddersfield - SEN + V40"
+//let url = @"http://results.smartiming.co.uk/view-race/ycca1718winterseriesr5senv40/"
+//let maxLaps = 5
+//let maxPositions = 14
+
+
+let title ="Rd6 - Yorkshire Points Winter Cyclocross 2017 - Halifax- SEN + V40"
+let url = @"http://results.smartiming.co.uk/view-race/ycca1718winterseriesr6senv40/"
 let maxLaps = 5
 let maxPositions = 14
+
+
+
 
 let riderAndLapPositions = 
     url

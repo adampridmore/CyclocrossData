@@ -39,12 +39,13 @@ let riderAndLapsFromHtml(url) =
     let parseTimeSpan (text:string) =
         try
             ("00:" + text) |> TimeSpan.Parse
-        with | _ -> failwithf "Error parsing %s" text
+        with | _ -> failwithf "Error parsing TimeSpan '%s'" text
 
     let rowToLaps (row : Row) = 
         lapColumnIndexes 
         |> Seq.map (fun index -> row.values.[index])
         |> Seq.filter (String.IsNullOrWhiteSpace >> not)
+        |> Seq.filter (fun v -> ["DNF";"DNS";"999"] |> Seq.contains v |> not)
         |> Seq.map parseTimeSpan
 
     let lapsToCumulative (laps: TimeSpan seq) =

@@ -98,33 +98,41 @@ open XPlot.GoogleCharts
 //let maxLaps = 5
 //let maxPositions = 14
 
-//let title ="Yorkshire Points Winter Cyclocross 2017 Rd2 - Temple Newsham - SEN + V40"
+// **GONE** - Results looks like for wrong race...
+//let title ="RD1 -Yorkshire Points Winter Cyclocross 2017 - Middleton Park - SEN + V40"
+//let url = @"http://results.smartiming.co.uk/view-race/ycca1718winterseriesr1senv40/"
+//let maxLaps = 5
+//let maxPositions = 14
+
+//let title ="RD2 -Yorkshire Points Winter Cyclocross 2017 Temple Newsham - SEN + V40"
 //let url = @"http://results.smartiming.co.uk/view-race/ycca1718winterseriesr2senv40/"
 //let maxLaps = 5
 //let maxPositions = 14
 
-//let title ="Yorkshire Points Winter Cyclocross 2017 Rd3 - Bedale - SEN + V40"
+//let title ="RD3 - Yorkshire Points Winter Cyclocross 2017 - Bedale - SEN + V40"
 //let url = @"http://results.smartiming.co.uk/view-race/ycca1718winterseriesr3senv40/"
 //let maxLaps = 5
 //let maxPositions = 14
 
-//let title ="Yorkshire Points Winter Cyclocross 2017 Rd4 - Skipton - SEN + V40"
+//let title ="RD4 - Yorkshire Points Winter Cyclocross 2017 - Skipton - SEN + V40"
 //let url = @"http://results.smartiming.co.uk/view-race/ycca1718winterseriesr4senv40/"
 //let maxLaps = 5
 //let maxPositions = 14
 
-//let title ="Yorkshire Points Winter Cyclocross 2017 Rd5 - Huddersfield - SEN + V40"
+//let title ="RD5 - Yorkshire Points Winter Cyclocross 2017 - Huddersfield - SEN + V40"
 //let url = @"http://results.smartiming.co.uk/view-race/ycca1718winterseriesr5senv40/"
 //let maxLaps = 5
 //let maxPositions = 14
 
+//let title ="Rd6 - Yorkshire Points Winter Cyclocross 2017 - Halifax- SEN + V40"
+//let url = @"http://results.smartiming.co.uk/view-race/ycca1718winterseriesr6senv40/"
+//let maxLaps = 5
+//let maxPositions = 14
 
-let title ="Rd6 - Yorkshire Points Winter Cyclocross 2017 - Halifax- SEN + V40"
-let url = @"http://results.smartiming.co.uk/view-race/ycca1718winterseriesr6senv40/"
+let title ="BSK Winter Cyclocross 2017 - Pateley Bridge - SEN + JUN + V + WOM"
+let url = @"http://results.smartiming.co.uk/view-race/ycca1718winterseriespateleybridgesenjunv40wom/"
 let maxLaps = 5
 let maxPositions = 14
-
-
 
 
 let riderAndLapPositions = 
@@ -150,7 +158,7 @@ let hAxis = Axis(title = "Lap", gridlines= Gridlines(count=maxLaps))
 let vAxis = Axis(title = "Position", gridlines = Gridlines(count=maxPositions))
 
 let options =
-    Options( 
+    Options(
         title = title, 
         legend = Legend(position = "right"),
         height = 1600, 

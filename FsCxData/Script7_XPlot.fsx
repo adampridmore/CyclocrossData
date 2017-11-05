@@ -129,11 +129,15 @@ open XPlot.GoogleCharts
 //let maxLaps = 5
 //let maxPositions = 14
 
-let title ="BSK Winter Cyclocross 2017 - Pateley Bridge - SEN + JUN + V + WOM"
-let url = @"http://results.smartiming.co.uk/view-race/ycca1718winterseriespateleybridgesenjunv40wom/"
+//let title ="BSK Winter Cyclocross 2017 - Pateley Bridge - SEN + JUN + V + WOM"
+//let url = @"http://results.smartiming.co.uk/view-race/ycca1718winterseriespateleybridgesenjunv40wom/"
+//let maxLaps = 5
+//let maxPositions = 14
+
+let title ="RD7 Winter Cyclocross 2017 - Halifax Shibden Park - SEN + JUN + V40"
+let url = @"http://results.smartiming.co.uk/view-race/ycca1718winterseriesr7senv40/"
 let maxLaps = 5
 let maxPositions = 14
-
 
 let riderAndLapPositions = 
     url

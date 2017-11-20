@@ -134,10 +134,21 @@ open XPlot.GoogleCharts
 //let maxLaps = 5
 //let maxPositions = 14
 
-let title ="RD7 Winter Cyclocross 2017 - Halifax Shibden Park - SEN + JUN + V40"
-let url = @"http://results.smartiming.co.uk/view-race/ycca1718winterseriesr7senv40/"
+//let title ="RD7 Winter Cyclocross 2017 - Halifax Shibden Park - SEN + JUN + V40"
+//let url = @"http://results.smartiming.co.uk/view-race/ycca1718winterseriesr7senv40/"
+//let maxLaps = 5
+//let maxPositions = 14
+
+//let title ="YCCA - Winter Cyclocross 2017 - Bradleywoods Seniors Jun & V40 & Women"
+//let url = @"http://results.smartiming.co.uk/view-race/ycca1718winterseriesbradleywoodssenjunv40wom/"
+//let maxLaps = 5
+//let maxPositions = 14
+
+let title ="YCCA - Winter Cyclocross 2017 - Myrtle Park - Bingley Seniors V40"
+let url = @"http://results.smartiming.co.uk/view-race/ycca1718winterseriesr8senv40/"
 let maxLaps = 5
 let maxPositions = 14
+
 
 let riderAndLapPositions = 
     url

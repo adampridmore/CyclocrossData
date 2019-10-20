@@ -83,7 +83,7 @@ open XPlot.GoogleCharts
 //let maxLaps = 5
 //let maxPositions = 10
 
-//let title ="Yorkshire Points Summer Cyclocross 2017 Rd5 Wakefield - Seniors & V40's Time Chart"
+//let title ="Yorkshire Points Summer Cyclocross 2017 Rd5 Wakefield - Seniors & V40s Time Chart"
 //let url = @"http://results.smartiming.co.uk/view-race/yccasummer2017rd5over14/"
 //let maxLaps = 5
 //let maxPositions = 10
@@ -144,8 +144,23 @@ open XPlot.GoogleCharts
 //let maxLaps = 5
 //let maxPositions = 14
 
-let title ="YCCA - Winter Cyclocross 2017 - Myrtle Park - Bingley Seniors V40"
-let url = @"http://results.smartiming.co.uk/view-race/ycca1718winterseriesr8senv40/"
+//let title ="YCCA - Winter Cyclocross 2017 - Myrtle Park - Bingley Seniors V40"
+//let url = @"http://results.smartiming.co.uk/view-race/ycca1718winterseriesr8senv40/"
+//let maxLaps = 5
+//let maxPositions = 14
+
+//let title ="Yorkshire Points Winter 2018 Rd3 - Bedale - Seniors & V40's Time Chart"
+//let url = @"http://results.smartiming.co.uk/view-race/ycca1819winterseriesbedalejunsenvet40/"
+//let maxLaps = 5
+//let maxPositions = 14
+
+//let title ="Yorkshire Points Winter 2018 Rd9 - Wakefield- Seniors & V40s Time Chart"
+//let url = @"http://results.smartiming.co.uk/view-race/ycca1819winterseriesthornesparkjunsenvet40rd9/"
+//let maxLaps = 5
+//let maxPositions = 14
+
+let title ="Yorkshire Points Winter 2018 Rd10- Todmorden - Seniors & V40s Time Chart"
+let url = @"http://results.smartiming.co.uk/view-race/ycca1819winterseriestodmordenjunsenvet40rd9/"
 let maxLaps = 5
 let maxPositions = 14
 
@@ -186,7 +201,8 @@ let options =
 let setChartId title (chart:GoogleChart) =
     chart.Id <- title  
     chart
-      
+ 
+data |> sprintf "%A"
 
 data 
 |> XPlot.GoogleCharts.Chart.Line 

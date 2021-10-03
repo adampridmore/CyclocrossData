@@ -20,6 +20,8 @@
     <Compile Include="LapRender.fs" />
     
     <None Include="Script_4_YP_RD4.fsx" />
+    
+    <None Include="Script_10_YP_2021_RD3.fsx" />
     <None Include="Script_5_3PCX.fsx" />
     <None Include="Script_6.fsx" />
     <None Include="Script7_XPlot.fsx" />

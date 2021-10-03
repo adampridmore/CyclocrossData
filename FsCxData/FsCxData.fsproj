@@ -12,13 +12,15 @@
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Types.fs" />
     <Compile Include="TableTypes.fs" />
-
     <Compile Include="HtmlTable.fs" />
     <Compile Include="HtmlTableTests.fs" />
-    <!--<Compile Include="HtmlParse.fs" />
+    <Compile Include="HtmlParse.fs" />
     <Compile Include="CsvParseYP.fs" />
     <Compile Include="CsvParse3PCX.fs" />
+        
+    <!--
     <Compile Include="LapRender.fs" />
+    
     <Compile Include="Main.fs" />
     <None Include="Script_4_YP_RD4.fsx" />
     <None Include="Script_5_3PCX.fsx" />

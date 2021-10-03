@@ -45,7 +45,7 @@ let justNumbers (value:string) =
         |> Seq.toArray
     new String(chars)
 
-let tryInt32 value = 
+let tryInt32 (value:String) = 
     let couldParse, parsedValue = Int32.TryParse(value)
     match couldParse with 
     | true -> parsedValue |> Some

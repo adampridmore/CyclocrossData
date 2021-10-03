@@ -14,7 +14,7 @@ let riderAndLapsFromHtml(url) =
         headers 
         |> Seq.findIndex (fun x -> x = name)
 
-    let armColumnIndex = "Arm" |> getColumnIndex
+//    let armColumnIndex = "Arm" |> getColumnIndex
     let bibColumnIndex = "Bib" |> getColumnIndex
     let firstNameColumnIndex = "First Name" |> getColumnIndex
     let surnameColumnIndex = "Surname"|> getColumnIndex

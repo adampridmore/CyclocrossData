@@ -1,9 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
     <WarnOn>3390;$(WarnOn)</WarnOn>
+
+    <IsPackable>false</IsPackable>
+    <GenerateProgramFile>false</GenerateProgramFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,8 +14,8 @@
     <Compile Include="TableTypes.fs" />
 
     <Compile Include="HtmlTable.fs" />
-    <!--<Compile Include="HtmlTableTests.fs" />
-    <Compile Include="HtmlParse.fs" />
+    <Compile Include="HtmlTableTests.fs" />
+    <!--<Compile Include="HtmlParse.fs" />
     <Compile Include="CsvParseYP.fs" />
     <Compile Include="CsvParse3PCX.fs" />
     <Compile Include="LapRender.fs" />
@@ -36,6 +38,12 @@
   <ItemGroup>
     <PackageReference Include="FSharp.Charting.Gtk" Version="2.1.0" />
     <PackageReference Include="FSharp.Data" Version="4.2.3" />
+    <PackageReference Include="FsUnit" Version="4.0.6" />
+    <PackageReference Include="NUnit" Version="3.13.2" />
+
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
+    <PackageReference Include="coverlet.collector" Version="3.0.2" />
   </ItemGroup>
 
 </Project>

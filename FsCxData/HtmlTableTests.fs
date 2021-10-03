@@ -13,7 +13,7 @@ let ``parse table``() =
     tables |> Seq.length |> should equal 1
 
     let table = tables |> Seq.head
-    table.id |> should equal "myTable"
+    table.id |> should equal (Some("myTable"))
     table.columns |> Seq.length |> should equal 1
     table.columns.[0] |> should equal "column1"
 
@@ -29,7 +29,7 @@ let ``parse table with th for row data``() =
     tables |> Seq.length |> should equal 1
 
     let table = tables |> Seq.head
-    table.id |> should equal "myTable"
+    table.id |> should equal (Some("myTable"))
     table.columns |> Seq.length |> should equal 1
     table.columns.[0] |> should equal "column1"
 

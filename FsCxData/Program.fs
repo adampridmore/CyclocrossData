@@ -1,17 +1,17 @@
-// Learn more about F# at http://docs.microsoft.com/dotnet/fsharp
-
+open FSharp.Data
+open FSharp.Charting
 open System
-
-// Define a function to construct a message to print
-let from whom =
-    sprintf "from %s" whom
+open HtmlParse
+open CsvParseYP
+open Types
+open LapRender
 
 [<EntryPoint>]
 let main argv =
- // printfn "Hello World" 
- // let riderAndLaps = riderAndLapsFromHtml()
-    // let riderAndLaps = riderAndLapsFromCsv()
-
-    // riderAndLaps |> render
+//    printfn "Hello World" 
+//    let riderAndLaps = riderAndLapsFromHtml()
+//    let riderAndLaps = riderAndLapsFromCsv()
+    
+//    riderAndLaps |> render
 
     0

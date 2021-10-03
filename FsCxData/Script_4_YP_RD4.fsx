@@ -1,6 +1,7 @@
-﻿#r @"..\packages\FSharp.Data.2.3.2\lib\net40\FSharp.Data.dll"
-#r @"..\packages\FSharp.Charting.0.90.14\lib\net40\FSharp.Charting.dll"
-#r @"System.Windows.Forms.DataVisualization.dll"
+﻿#r "nuget: FSharp.Data, 4.2.3"
+#r @"nuget:FSharp.Charting.Gtk, 2.1.0"
+#r @"nuget: XPlot.GoogleCharts, 3.0.1"
+//#r @"System.Windows.Forms.DataVisualization.dll"
 
 #load "Types.fs"
 #load "TableTypes.fs"

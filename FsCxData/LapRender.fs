@@ -65,18 +65,21 @@ let highlightByRiderList (rider:Rider) =
 
 let highlight = fun _ -> false
 
+// TODO: Rename to to chart line points. It doesn't return a chart.
 let toRiderChart rider (laps: int list) (color: System.Drawing.Color) = 
     let name = sprintf "%s(%d)" rider.name (laps |> Seq.last) 
 
     let borderWidth = 5
     
-    FSharp.Charting.Chart.Line(laps, Name = name)
-    |> FSharp.Charting.Chart.WithStyling(BorderWidth=borderWidth) 
+    laps |> Seq.mapi(fun i lap -> (i, lap))
+    
+//    FSharp.Charting.Chart.Line(laps, Name = name)
+//    |> FSharp.Charting.Chart.WithStyling(BorderWidth=borderWidth) 
 
 let numberToColor i = 
     let randomColor = Color.FromArgb(i * 100)
     Color.FromArgb(255, randomColor)
-
+ 
 let getCharForRiderAndLapPositions riderAndLaps =
     let maximumSegmentIndex = 
         (riderAndLaps 
@@ -86,16 +89,14 @@ let getCharForRiderAndLapPositions riderAndLaps =
     
     riderAndLaps
     |> Seq.mapi (fun i (rider, laps) -> toRiderChart rider laps (i |> numberToColor) )
-    |> Chart.Combine
-    |> Chart.WithXAxis(Title="Lap")
-    |> Chart.WithYAxis(Title="Position")
-    |> Chart.WithArea.AxisX(Minimum=0.0,Maximum=(maximumSegmentIndex |> float))
-    |> Chart.WithLegend(Enabled=true,Title="Riders", InsideArea=false )
-    
-let render (riderAndLaps : RiderRace seq) = 
-    riderAndLaps 
-    |> mapToRiderAndLapPositions
-    |> Seq.sortBy (fun (rider,_) -> rider |> highlight)
-    |> getCharForRiderAndLapPositions
-    |> Chart.Show
+    |> XPlot.GoogleCharts.Chart.Line
+    |> XPlot.GoogleCharts.Chart.WithXTitle("Lap")
+    |> XPlot.GoogleCharts.Chart.WithYTitle("Position")
 
+let render (riderAndLaps : RiderRace seq) = 
+    let x =
+        riderAndLaps 
+        |> mapToRiderAndLapPositions
+        |> Seq.sortBy (fun (rider,_) -> rider |> highlight)
+        |> getCharForRiderAndLapPositions
+    x.Show()

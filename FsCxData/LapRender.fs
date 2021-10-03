@@ -80,19 +80,23 @@ let numberToColor i =
     let randomColor = Color.FromArgb(i * 100)
     Color.FromArgb(255, randomColor)
  
-let getCharForRiderAndLapPositions riderAndLaps =
+let getCharForRiderAndLapPositions (riderAndLaps: seq<Rider * int list>): XPlot.GoogleCharts.GoogleChart =
     let maximumSegmentIndex = 
         (riderAndLaps 
         |> Seq.map snd 
         |> Seq.map Seq.length
         |> Seq.max) - 1
+        
+    let labels = riderAndLaps |> Seq.map(fun rl -> (fst rl).name )
     
     riderAndLaps
     |> Seq.mapi (fun i (rider, laps) -> toRiderChart rider laps (i |> numberToColor) )
     |> XPlot.GoogleCharts.Chart.Line
+    |> XPlot.GoogleCharts.Chart.WithLabels(labels)
     |> XPlot.GoogleCharts.Chart.WithXTitle("Lap")
     |> XPlot.GoogleCharts.Chart.WithYTitle("Position")
-
+    |> XPlot.GoogleCharts.Chart.WithSize(1024, 2048)
+    
 let render (riderAndLaps : RiderRace seq) = 
     let x =
         riderAndLaps 
@@ -100,3 +104,4 @@ let render (riderAndLaps : RiderRace seq) =
         |> Seq.sortBy (fun (rider,_) -> rider |> highlight)
         |> getCharForRiderAndLapPositions
     x.Show()
+    

@@ -35,7 +35,7 @@
     <Content Include="Google.DataTable.Net.Wrapper.XML" /> 
     -->
 
-    <Compile Include="Program.fs" />
+    <!-- <Compile Include="Program.fs" /> -->
 
   </ItemGroup>
 

@@ -2,11 +2,11 @@
 #r @"nuget:FSharp.Charting.Gtk, 2.1.0"
 #r @"nuget: XPlot.GoogleCharts, 3.0.1"
 
-#load "Types.fs"
-#load "TableTypes.fs"
-#load "HtmlTable.fs"
-#load "HtmlParse.fs"
-#load "LapRender.fs"
+#load "../Types.fs"
+#load "../TableTypes.fs"
+#load "../HtmlTable.fs"
+#load "../HtmlParse.fs"
+#load "../LapRender.fs"
 
 open FSharp.Data
 open FSharp.Charting

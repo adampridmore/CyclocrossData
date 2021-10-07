@@ -18,18 +18,6 @@
     <Compile Include="CsvParseYP.fs" />
     <Compile Include="CsvParse3PCX.fs" />
     <Compile Include="LapRender.fs" />
-    
-    <None Include="Script_4_YP_RD4.fsx" />
-    
-    <None Include="Script_10_YP_2021_RD3.fsx" />
-    <None Include="Script_5_3PCX.fsx" />
-    <None Include="Script_6.fsx" />
-    <None Include="Script7_XPlot.fsx" />
-    <None Include="Script8_XPlot_LapTimes.fsx" />
-    <None Include="Script9_TDY_2017_Results.fsx" />
-    <None Include="Chart_Scratch.fsx" />
-    <None Include="DateGenerator.fsx" />
-
   </ItemGroup>
 
   <ItemGroup>

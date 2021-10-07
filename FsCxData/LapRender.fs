@@ -58,11 +58,16 @@ let getCharForRiderAndLapPositions (riderAndLaps: seq<Rider * int list>): XPlot.
     |> XPlot.GoogleCharts.Chart.WithXTitle("Lap")
     |> XPlot.GoogleCharts.Chart.WithYTitle("Position")
     |> XPlot.GoogleCharts.Chart.WithSize(1024, 2048)
-    
-let render (riderAndLaps : RiderRace seq) = 
-    let x =
+   
+let toGoogleChart(riderAndLaps: RiderRace seq) : XPlot.GoogleCharts.GoogleChart = 
+    riderAndLaps 
+    |> mapToRiderAndLapPositions
+    |> Seq.sortBy fst
+    |> getCharForRiderAndLapPositions
+
+let render (riderAndLaps : RiderRace seq) : Unit = 
+    let googleChart : XPlot.GoogleCharts.GoogleChart =
         riderAndLaps 
-        |> mapToRiderAndLapPositions
-        |> Seq.sortBy fst
-        |> getCharForRiderAndLapPositions
-    x.Show()
+        |> toGoogleChart
+
+    googleChart.Show()

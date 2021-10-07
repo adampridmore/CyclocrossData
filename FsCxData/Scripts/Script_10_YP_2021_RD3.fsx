@@ -17,15 +17,11 @@ open LapRender
 
 // Winter 2021
 let urls = [
-//    @"http://results.smartiming.co.uk/view-race/yycard1mv40senior/"  // RD1 (Not on smart timings...)
-    @"http://results.smartiming.co.uk/view-race/yycard2mv40senior/"; // RD2
+    // @"http://results.smartiming.co.uk/view-race/yycard1mv40senior/";  // RD1 (Not on smart timings...)
+    // @"http://results.smartiming.co.uk/view-race/yycard2mv40senior/"; // RD2
     @"http://results.smartiming.co.uk/view-race/yycard3mv40senior/"  // RD3
-    ]
-
+]
 
 urls //|> Seq.head |> Seq.singleton
 |> Seq.map riderAndLapsFromHtml
 |> Seq.iter render
-
-
-

@@ -5,7 +5,7 @@ open System
 open Types
 open TableTypes
 
-let riderAndLapsFromHtml(url) = 
+let riderAndLapsFromHtml(url: String) : list<RiderRace> = 
     let data = url |> HtmlTable.LoadById "dt-user-list"
 
     let headers = data.columns
@@ -20,7 +20,7 @@ let riderAndLapsFromHtml(url) =
     let clubColumnIndex = "Club" |> getColumnIndex
     let placeOverallIndex = "Place Overall" |> getColumnIndex
 
-    let isLapColumnName (name:String) = 
+    let isLapColumnName (name:String) : bool = 
         match name with
         | name when name.Length <= 3 -> false
         | name when name = "Laps" -> false
@@ -28,26 +28,26 @@ let riderAndLapsFromHtml(url) =
         | name when name.Substring(0, 3) = "Lap" -> true
         | _ -> false
 
-    let lapColumnIndexes = 
+    let lapColumnIndexes : list<int> = 
         headers
         |> Seq.mapi(fun i name -> (i, name) ) 
         |> Seq.filter (snd >> isLapColumnName) 
         |> Seq.map fst
         |> Seq.toList
 
-    let parseTimeSpan (text:string) =
+    let parseTimeSpan (text:string) : TimeSpan =
         try
             ("00:" + text) |> TimeSpan.Parse
         with | _ -> failwithf "Error parsing TimeSpan '%s'" text
 
-    let rowToLaps (row : Row) = 
+    let rowToLaps (row : Row) : seq<TimeSpan> = 
         lapColumnIndexes 
         |> Seq.map (fun index -> row.values.[index])
         |> Seq.filter (String.IsNullOrWhiteSpace >> not)
         |> Seq.filter (fun v -> ["DNF";"DNS";"999"] |> Seq.contains v |> not)
         |> Seq.map parseTimeSpan
 
-    let lapsToCumulative (laps: TimeSpan seq) =
+    let lapsToCumulative (laps: seq<TimeSpan>) : seq<TimeSpan> =
         let mapping (state:TimeSpan) (lap:TimeSpan) =
             let total = lap + state
             (total, total)
@@ -55,7 +55,7 @@ let riderAndLapsFromHtml(url) =
         |> Seq.mapFold mapping TimeSpan.Zero
         |> fst
 
-    let parseRow (row:Row) = 
+    let parseRow (row:Row) : RiderRace = 
         let firstname = row.values.[firstNameColumnIndex]
         let surname = row.values.[surnameColumnIndex]
         let club = row.values.[clubColumnIndex]

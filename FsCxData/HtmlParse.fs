@@ -14,7 +14,6 @@ let riderAndLapsFromHtml(url) =
         headers 
         |> Seq.findIndex (fun x -> x = name)
 
-//    let armColumnIndex = "Arm" |> getColumnIndex
     let bibColumnIndex = "Bib" |> getColumnIndex
     let firstNameColumnIndex = "First Name" |> getColumnIndex
     let surnameColumnIndex = "Surname"|> getColumnIndex
@@ -61,7 +60,6 @@ let riderAndLapsFromHtml(url) =
         let surname = row.values.[surnameColumnIndex]
         let club = row.values.[clubColumnIndex]
         let placeOverall = row.values.[placeOverallIndex] |> int32
-//        let armNumber = row.values.[armColumnIndex] |> int32
         let bibNumber = row.values.[bibColumnIndex] |> int32
 
         let lapsTimes = row |> rowToLaps
@@ -87,7 +85,6 @@ let riderAndLapsFromHtml(url) =
 
     data.rows 
     |> Seq.map parseRow 
-//    |> Seq.take 1
     |> Seq.filter (fun r -> r.rider.name |> String.IsNullOrWhiteSpace |> not)
     |> Seq.filter (fun r -> r.lapCount <> 0)
     |> Seq.sortBy (fun r -> r.rider.name)

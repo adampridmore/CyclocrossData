@@ -43,7 +43,7 @@ let justNumbers (value:string) =
         value.ToCharArray() 
         |> Seq.filter (fun c -> Char.IsDigit(c))
         |> Seq.toArray
-    new String(chars)
+    String(chars)
 
 let tryInt32 (value:String) = 
     let couldParse, parsedValue = Int32.TryParse(value)

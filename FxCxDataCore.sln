@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FsCxData", "FsCxData\FsCxData.fsproj", "{13220B48-FDFE-44FC-A0B4-DB8D5515635E}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FsCxDataWeb", "FsCxDataWeb\FsCxDataWeb.fsproj", "{EFB18B6B-2E88-4B6F-BFF4-AC0C830CBC22}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,17 @@ Global
 		{13220B48-FDFE-44FC-A0B4-DB8D5515635E}.Release|x64.Build.0 = Release|Any CPU
 		{13220B48-FDFE-44FC-A0B4-DB8D5515635E}.Release|x86.ActiveCfg = Release|Any CPU
 		{13220B48-FDFE-44FC-A0B4-DB8D5515635E}.Release|x86.Build.0 = Release|Any CPU
+		{EFB18B6B-2E88-4B6F-BFF4-AC0C830CBC22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFB18B6B-2E88-4B6F-BFF4-AC0C830CBC22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFB18B6B-2E88-4B6F-BFF4-AC0C830CBC22}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EFB18B6B-2E88-4B6F-BFF4-AC0C830CBC22}.Debug|x64.Build.0 = Debug|Any CPU
+		{EFB18B6B-2E88-4B6F-BFF4-AC0C830CBC22}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EFB18B6B-2E88-4B6F-BFF4-AC0C830CBC22}.Debug|x86.Build.0 = Debug|Any CPU
+		{EFB18B6B-2E88-4B6F-BFF4-AC0C830CBC22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFB18B6B-2E88-4B6F-BFF4-AC0C830CBC22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFB18B6B-2E88-4B6F-BFF4-AC0C830CBC22}.Release|x64.ActiveCfg = Release|Any CPU
+		{EFB18B6B-2E88-4B6F-BFF4-AC0C830CBC22}.Release|x64.Build.0 = Release|Any CPU
+		{EFB18B6B-2E88-4B6F-BFF4-AC0C830CBC22}.Release|x86.ActiveCfg = Release|Any CPU
+		{EFB18B6B-2E88-4B6F-BFF4-AC0C830CBC22}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

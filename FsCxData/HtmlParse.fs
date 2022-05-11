@@ -21,11 +21,11 @@ let riderAndLapsFromHtml(url: String) : list<RiderRace> =
     let placeOverallIndex = "Place Overall" |> getColumnIndex
 
     let isLapColumnName (name:String) : bool = 
-        match name with
+        match (name.ToLower()) with
         | name when name.Length <= 3 -> false
-        | name when name = "Laps" -> false
-        | name when name = "OutLap" -> true
-        | name when name.Substring(0, 3) = "Lap" -> true
+        | name when name = "laps" -> false
+        | name when name = "outlap" -> true
+        | name when name.Substring(0, 3) = "lap" -> true
         | _ -> false
 
     let lapColumnIndexes : list<int> = 

@@ -21,7 +21,8 @@ let urls = [
     // @"http://results.smartiming.co.uk/view-race/yycard2mv40senior/";     // RD2
     // @"http://results.smartiming.co.uk/view-race/yycard3mv40senior/"      // RD3
     // "http://results.smartiming.co.uk/view-race/northernareachampsmjmv40/"   // Northern Area Championships MJ - MV40
-    "http://results.smartiming.co.uk/view-race/ycca2022adults/"   // YP - Yonk Bonk
+    // "http://results.smartiming.co.uk/view-race/ycca2022adults/"   // YP - Yonk Bonk
+    "http://results.smartiming.co.uk/view-race/ycca2022summerr2adults/" // YP Summer RD 2 - York
     
 ]
 

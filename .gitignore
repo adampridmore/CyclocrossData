@@ -214,3 +214,5 @@ ModelManifest.xml
 
 .fake
 .ionide
+
+.DS_Store

@@ -25,7 +25,8 @@ let urls = [
     // "http://results.smartiming.co.uk/view-race/ycca2022adults/"   // YP - Yonk Bonk
     // "http://results.smartiming.co.uk/view-race/ycca2022summerr2adults/" // YP Summer RD 2 - York
     // "http://results.smartiming.co.uk/view-race/ycca2023summerr2adults/" // YP Summer RD2 Myrtle Park
-    "http://results.smartiming.co.uk/view-race/ycca2023winterr1mv40/" // YP 2023 Summer Winder R1 Wyke
+    // "http://results.smartiming.co.uk/view-race/ycca2023winterr1mv40/" // YP 2023 Summer Winder R1 Wyke
+    "http://results.smartiming.co.uk/view-race/yccawinters2023rd6ovojos/" // YP 2023 Winter Rd6 Wakefield
 ]
 
 urls //|> Seq.head |> Seq.singleton
